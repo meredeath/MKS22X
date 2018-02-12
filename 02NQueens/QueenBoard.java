@@ -29,9 +29,18 @@ public class QueenBoard{
     private boolean addQueen(int r, int c){
 	if(board[r][c]==0){
 	    board[r][c]=-1;
+	    threaten(r,c);
 	    return true;
 	}else{
 	    return false;
+	}
+    }
+
+    private void threaten(int r, int c){
+	int cols = board.length-c;
+	for(c;c<cols;c++){
+	    board[r][c]++;
+	    board[r+1][c]++;
 	}
     }
     
