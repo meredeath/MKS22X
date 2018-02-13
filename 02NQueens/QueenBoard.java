@@ -48,26 +48,59 @@ public class QueenBoard{
 	for(int cur =c+1;cur<cols;cur++){
 	    board[r][cur]++;
 	}
+	for(int cur=c-1;cur<c;cur--){
+	    board[r][cur]++;
+	}
+	int col = c+1;
 	for(int row = r+1;row<cols;row++){
-	    for(int col=c+1;col<cols;col++){
 		board[row][col]++;
-	    }
+		col++;
+	}
+	for(int row = r+1;row<c;row--){
+	    board[row][col]++;
+	    col--;
+	}
+	
+    }
+
+    private void unthreaten(int r, int c){
+	int cols = board.length-c;
+	for(int cur =c+1;cur<cols;cur++){
+	    board[r][cur]--;
+	}
+	int col = c+1;
+	for(int row = r+1;row<cols;row++){
+		board[row][col]--;
+		col++;
 	}
     }
     
     private boolean removeQueen(int r, int c){
 	if(board[r][c]==-1){
 	    board[r][c]=0;
+	    unthreaten(r,c);
 	    return true;
 	}else{
 	    return false;
 	}
     }
 
-    /*
-    public boolean solve(){
+    public boolean solve(int R){
+	if(R==board.length){
+	    return true;
+	}
+	for(int i=0;i<board.length;i++){
+	    if(addQueen(i,R)){
+		if(solve(R+1)){
+		    return true;
+		}
+	    }
+	    removeQueen(i,R);
+	}
+	return false;
     }
 
+    /*
     public int countSolutions(){
     }
     */
@@ -75,7 +108,11 @@ public class QueenBoard{
     public static void main(String[] args){
 	QueenBoard a = new QueenBoard(4);
 	System.out.println(a);
-	a.addQueen(0,0);
+	a.addQueen(1,1);
+	System.out.println(a);
+	a.removeQueen(1,1);
+	System.out.println(a);
+	System.out.println(a.solve(0));
 	System.out.println(a);
     }
 }
