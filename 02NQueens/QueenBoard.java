@@ -18,8 +18,15 @@ public class QueenBoard{
 	    for(int g=0;g<board[0].length;g++){
 		if(board[i][g]==-1){
 		    ans+="Q";
+		    /*
 		}else{
 		    ans+="_";
+		}
+		    */
+		}else if(board[i][g]==0){
+		    ans+="0";
+		}else{
+		    ans+=board[i][g]+"";
 		}
 	    }
 	}
@@ -38,9 +45,13 @@ public class QueenBoard{
 
     private void threaten(int r, int c){
 	int cols = board.length-c;
-	for(c;c<cols;c++){
-	    board[r][c]++;
-	    board[r+1][c]++;
+	for(int cur =c+1;cur<cols;cur++){
+	    board[r][cur]++;
+	}
+	for(int row = r+1;row<cols;row++){
+	    for(int col=c+1;col<cols;col++){
+		board[row][col]++;
+	    }
 	}
     }
     
