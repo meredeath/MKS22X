@@ -35,8 +35,8 @@ public class QueenBoard{
     
     private boolean addQueen(int r, int c){
 	if(board[r][c]==0){
-	    board[r][c]=-1;
 	    threaten(r,c);
+	    board[r][c]=-1;
 	    return true;
 	}else{
 	    return false;
@@ -45,21 +45,24 @@ public class QueenBoard{
 
     private void threaten(int r, int c){
 	int cols = board.length-c;
-	for(int cur =c+1;cur<cols;cur++){
+	for(int cur =cols;cur<board.length;cur++){
 	    board[r][cur]++;
 	}
-	for(int cur=c-1;cur<c;cur--){
+	for(int cur=c-1;cur>-1;cur--){
 	    board[r][cur]++;
 	}
+	/*
 	int col = c+1;
 	for(int row = r+1;row<cols;row++){
 		board[row][col]++;
 		col++;
 	}
-	for(int row = r+1;row<c;row--){
-	    board[row][col]++;
-	    col--;
+	int four = c+1;
+	for(int row = r+1;row>0;row--){
+	    board[row][four]++;
+	    four--;
 	}
+	*/
 	
     }
 
@@ -106,13 +109,13 @@ public class QueenBoard{
     */
 
     public static void main(String[] args){
-	QueenBoard a = new QueenBoard(4);
+	QueenBoard a = new QueenBoard(5);
 	System.out.println(a);
-	a.addQueen(1,1);
+	a.addQueen(2,2);
 	System.out.println(a);
-	a.removeQueen(1,1);
-	System.out.println(a);
-	System.out.println(a.solve(0));
-	System.out.println(a);
+	//a.removeQueen(2,2);
+	//System.out.println(a);
+	//System.out.println(a.solve(0));
+	//System.out.println(a);
     }
 }
