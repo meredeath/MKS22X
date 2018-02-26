@@ -44,25 +44,18 @@ public class QueenBoard{
     }
 
     private void threaten(int r, int c){
-	int cols = board.length-c;
-	for(int cur =cols;cur<board.length;cur++){
-	    board[r][cur]++;
+	for(int row=r-1;row>-1;row--){
+	    board[row][c]++;
 	}
-	for(int cur=c-1;cur>-1;cur--){
-	    board[r][cur]++;
+	for(int row=r+1;row<board.length;row++){
+	    board[row][c]++;
 	}
-	/*
-	int col = c+1;
-	for(int row = r+1;row<cols;row++){
-		board[row][col]++;
-		col++;
+	for(int col=c-1;col>-1;col--){
+	    board[r][col]++;
 	}
-	int four = c+1;
-	for(int row = r+1;row>0;row--){
-	    board[row][four]++;
-	    four--;
+	for(int col=c+1;col<board.length;col++){
+	    board[r][col]++;
 	}
-	*/
 	
     }
 
@@ -111,7 +104,7 @@ public class QueenBoard{
     public static void main(String[] args){
 	QueenBoard a = new QueenBoard(5);
 	System.out.println(a);
-	a.addQueen(2,2);
+	a.addQueen(3,2);
 	System.out.println(a);
 	//a.removeQueen(2,2);
 	//System.out.println(a);
