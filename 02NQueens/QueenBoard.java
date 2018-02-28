@@ -56,6 +56,8 @@ public class QueenBoard{
 	for(int col=c+1;col<board.length;col++){
 	    board[r][col]++;
 	}
+	int looper=Math.max(r,c);
+	
 	
     }
 
