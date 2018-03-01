@@ -45,7 +45,7 @@ public class Recursion{
     //the helper function for the square rooting function
     public double help(double n, double guess){
 	guess = (n/guess + guess)/2;
-	if(guess/Math.sqrt(n)-1 < 0.001){
+	if(guess/Math.sqrt(n)-1 < 0.0001){
 	    return guess;
 	}
 	return help(n, guess);
