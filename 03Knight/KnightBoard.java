@@ -48,7 +48,6 @@ public class KnightBoard{
 		}
 	    }
 	}
-
 	return solveH(startingRow,startingCol,1);
     }
     public boolean solveH(int row, int col, int level){
@@ -64,7 +63,7 @@ public class KnightBoard{
 	       solveH(row+2,col-1,level+1)||
 	       solveH(row+1,col+2,level+1)||
 	       solveH(row+1,col-2,level+1)){
-		return true;
+		System.out.println(this);
 	    }else{
 		board[row][col]=0;
 	    }
