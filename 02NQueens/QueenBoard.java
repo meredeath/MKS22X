@@ -3,6 +3,9 @@ public class QueenBoard{
     private int[][] board;
 
     public QueenBoard(int size){
+	if(size<0){
+	    throw new IllegalArgumentException("size cannot be negative!");
+	}
 	board = new int[size][size];
 	for(int i=0;i<size;i++){
 	    for(int g=0;g<size;g++){
@@ -147,8 +150,9 @@ public class QueenBoard{
 		}
 	    }
 	}
-	return this.solve(0);
+	return solve(0);
     }
+
     public boolean solve(int R){
 	if(R==board.length){
 	    return true;
@@ -172,30 +176,24 @@ public class QueenBoard{
 		}
 	    }
 	}
-	if(countSolutions(0)==-1){
-	    System.out.println("0 solutions exist for this board size");
-	    return -1;
-	}else{
-	    return countSolutions(0);
-	}
+	return countSolutions(0);
     }
-    public int countSolutions(int R){
-	int sols=0;
+public int countSolutions(int R){
+    int sols = 0;
 	if(R==board.length){
-	    sols++;
-	    return sols;
+	    return 1;
 	}
 	for(int i=0;i<board.length;i++){
 	    if(addQueen(i,R)){
-		countSolutions(R+1);
-		removeQueen(i,R);
+		sols += countSolutions(R+1);
 	    }
+	    removeQueen(i,R);
 	}
 	return sols;
     }
 
     public static void main(String[] args){
-	QueenBoard a = new QueenBoard(5);
+	QueenBoard a = new QueenBoard(6);
 	System.out.println(a);
 	//a.addQueen(3,0);
 	//a.addQueen(0,1);
