@@ -7,11 +7,16 @@ public class KnightBoard{
 	}
 	
 	board= new int[startingRows][startingCols];
+	
+	/*
+	MEREDITH for future reference, int arrays are initialized at 0
+
 	for(int i=0;i<startingRows;i++){
 	    for(int g=0;g<startingCols;g++){
 		board[i][g]=0;
 	    }
 	}
+	*/
     }
 
     public String toString(){
