@@ -2,7 +2,6 @@ import java.util.*;
 import java.io.*;
 public class Maze{
 
-
     private char[][]maze;
     private boolean animate;//false by default
 
@@ -24,8 +23,15 @@ public class Maze{
 
     */
 
-    public Maze(String filename){
+    public Maze(String filename) throws FileNotFoundException {
         animate=false;
+
+	File maz = new File(filename);
+	Scanner scan = new Scanner(maz);
+	while(scan.hasNextLine()){
+	    String line = scan.nextLine();
+	    System.out.println(line);
+	}
 	
     }
 
