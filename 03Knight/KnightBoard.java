@@ -52,27 +52,19 @@ public class KnightBoard{
     }
     public boolean solveH(int row, int col, int level){
 	int[][] moves = {{-2,1},{-2,-1},{-1,2},{-1,-2},{2,1},{2,-1},{1,2},{1,-2}};
-	if(level==board.length*board[0].length-1){
-	    if(move(row,col,level)){
-		return true;
-	    }
+	if(level==board.length*board[0].length){
+	    return true;
 	}
-	    /*
-	    if(solveH(row-2,col+1,level+1)||
-	       solveH(row-2,col-1,level+1)||
-	       solveH(row-1,col+2,level+1)||
-	       solveH(row-1,col-2,level+1)||
-	       solveH(row+2,col+1,level+1)||
-	       solveH(row+2,col-1,level+1)||
-	       solveH(row+1,col+2,level+1)||
-	       solveH(row+1,col-2,level+1))
-	    */
 	for(int i=0;i<=8;i++){
 	    if(move(row,col,level)){
 		if(solveH(row+moves[i][0],col+moves[i][1],level+1)){
 		    return true;
 		}else{
-		    board[row+moves[i][0]][col+moves[i][1]]=0;
+		    if(row+moves[i][0]>0 && row+moves[i][0]<board.length
+		       && col+moves[i][1]>0 && col+moves[i][i]<board[0].length){
+			board[row+moves[i][0]][col+moves[i][1]]=0;
+		    }
+		    continue;
 		}
 	    }
 	}
