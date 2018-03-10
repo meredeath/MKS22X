@@ -19,6 +19,13 @@ public class KnightBoard{
 	*/
     }
 
+    public void clear(){
+	for(int i=0;i<board.length;i++){
+	    for(int g=0;g<board[0].length;g++){
+		board[i][g]=0;
+	    }
+	}
+    }
     public String toString(){
 	String ans="";
 	for(int i=0;i<board.length;i++){
@@ -87,5 +94,32 @@ public class KnightBoard{
 	}
 	board[row][col]=level;
 	return true;
+    }
+
+    public int countSolutions(int startingRow, int startingCol){
+	if(startingRow<0 || startingCol<0){
+	    throw new IllegalArgumentException("Function parameters cannot be negative");
+	}
+	if(startingRow>board.length-1 || startingCol>board[0].length-1){
+	    throw new IllegalArgumentException("parameters specified are out of bounds of this particular board");
+	}
+	for(int i=0;i<board.length;i++){
+	    for(int g=0;g<board[0].length;g++){
+		if(board[i][g]!=0){
+		    throw new IllegalStateException("board cannot start with non-zero values");
+		}
+	    }
+	}
+
+	int sols = 0;
+	for(int i=0;i<board.length;i++){
+	    for(int g=0;g<board[0].length;g++){
+		if(solve(i,g)){
+		    sols++;
+		    clear();
+		}
+	    }
+	}
+	return sols;
     }
 }
