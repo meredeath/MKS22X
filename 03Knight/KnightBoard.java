@@ -48,6 +48,7 @@ public class KnightBoard{
 		}
 	    }
 	}
+	board[startingRow][startingCol]=1;
 	return solveH(startingRow,startingCol,1);
     }
     public boolean solveH(int row, int col, int level){
@@ -55,16 +56,19 @@ public class KnightBoard{
 	if(level==board.length*board[0].length){
 	    return true;
 	}
-	for(int i=0;i<=8;i++){
-	    if(move(row,col,level)){
+	for(int i=0;i<8;i++){
+	    /*
+	    System.out.println("row: ");
+	    System.out.println(row+moves[i][0]);
+	    System.out.println("col: ");
+	    System.out.println(col+moves[i][1]);
+	    */
+	    if(move(row+moves[i][0],col+moves[i][1],level+1)){
+		//System.out.println(this);
 		if(solveH(row+moves[i][0],col+moves[i][1],level+1)){
 		    return true;
 		}else{
-		    if(row+moves[i][0]>0 && row+moves[i][0]<board.length
-		       && col+moves[i][1]>0 && col+moves[i][i]<board[0].length){
-			board[row+moves[i][0]][col+moves[i][1]]=0;
-		    }
-		    continue;
+		    board[row+moves[i][0]][col+moves[i][1]]=0;
 		}
 	    }
 	}
@@ -80,9 +84,8 @@ public class KnightBoard{
 	}
 	if(board[row][col]!=0){
 	    return false;
-	}else{
-	    board[row][col]=level;
-	    return true;
 	}
+	board[row][col]=level;
+	return true;
     }
 }
