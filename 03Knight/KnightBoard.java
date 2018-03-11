@@ -26,6 +26,7 @@ public class KnightBoard{
 	    }
 	}
     }
+
     public String toString(){
 	String ans="";
 	for(int i=0;i<board.length;i++){
@@ -64,14 +65,7 @@ public class KnightBoard{
 	    return true;
 	}
 	for(int i=0;i<8;i++){
-	    /*
-	    System.out.println("row: ");
-	    System.out.println(row+moves[i][0]);
-	    System.out.println("col: ");
-	    System.out.println(col+moves[i][1]);
-	    */
 	    if(move(row+moves[i][0],col+moves[i][1],level+1)){
-		//System.out.println(this);
 		if(solveH(row+moves[i][0],col+moves[i][1],level+1)){
 		    return true;
 		}else{
@@ -96,11 +90,11 @@ public class KnightBoard{
 	return true;
     }
 
-    public int countSolutions(int startingRow, int startingCol){
-	if(startingRow<0 || startingCol<0){
+    public int countSolutions(int row, int col){
+	if(row<0 || col<0){
 	    throw new IllegalArgumentException("Function parameters cannot be negative");
 	}
-	if(startingRow>board.length-1 || startingCol>board[0].length-1){
+	if(row>board.length-1 || col>board[0].length-1){
 	    throw new IllegalArgumentException("parameters specified are out of bounds of this particular board");
 	}
 	for(int i=0;i<board.length;i++){
@@ -110,13 +104,17 @@ public class KnightBoard{
 		}
 	    }
 	}
-
-	int sols = 0;
-	for(int i=0;i<board.length;i++){
-	    for(int g=0;g<board[0].length;g++){
-		if(solve(i,g)){
+	return countHelp(row, col, 0);
+    }
+    public int countHelp(int row, int col, int sols){
+	int level =0;
+	int[][] moves = {{-2,1},{-2,-1},{-1,2},{-1,-2},{2,1},{2,-1},{1,2},{1,-2}};
+	for(int i=0;i<8;i++){
+	    if(move(row+moves[i][0],col+moves[i][1],level+1)){
+		if(solveH(row+moves[i][0],col+moves[i][1],level+1)){
 		    sols++;
-		    clear();
+		}else{
+		    board[row+moves[i][0]][col+moves[i][1]]=0;
 		}
 	    }
 	}
