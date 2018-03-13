@@ -106,18 +106,19 @@ public class KnightBoard{
 	}
 	return countHelp(row, col, 0);
     }
-    public int countHelp(int row, int col, int sols){
-	int level =0;
+    public int countHelp(int row, int col, int level){
+	boolean solved = true;
 	int[][] moves = {{-2,1},{-2,-1},{-1,2},{-1,-2},{2,1},{2,-1},{1,2},{1,-2}};
+	if(solved){
+	    return 1;
+	}
 	for(int i=0;i<8;i++){
 	    if(move(row+moves[i][0],col+moves[i][1],level+1)){
-		if(solveH(row+moves[i][0],col+moves[i][1],level+1)){
-		    sols++;
+		sols+=countHelp(row+moves[i][0],col+moves[i][1]);
 		}else{
 		    board[row+moves[i][0]][col+moves[i][1]]=0;
 		}
 	    }
-	}
 	return sols;
     }
 }
