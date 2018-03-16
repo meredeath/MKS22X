@@ -1,7 +1,8 @@
 import java.util.Random;
 public class Quick{
     public static int partition(int[] data, int start, int end){
-	int pi=(int)Math.random()*end;
+	Random ran = new Random();
+	int pi = ran.nextInt(data.length);
 	return pi;
     }
 
