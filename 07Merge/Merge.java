@@ -5,6 +5,9 @@ public class Merge{
 	    throw new IllegalArgumentException();
 	}
 	int[] temp = new int[data.length];
+	for(int i=0;i<data.length;i++){
+	    temp[i]=data[i];
+	}
 	msort(data,temp,0,data.length-1);
     }
     private static void msort(int[] data, int[] temp, int lo, int hi){
@@ -12,9 +15,6 @@ public class Merge{
 	    return;
 	}	
 	//System.out.println(Arrays.toString(temp));
-	for(int i=lo;i<hi;i++){
-	    temp[i]=data[i];
-	}
 	//System.out.println(Arrays.toString(data));
 	//System.out.println(Arrays.toString(temp));
 	int mid = (hi+lo)/2;
@@ -27,6 +27,7 @@ public class Merge{
 	int i2=mid+1;
 	int index = lo;
 	/*
+	//hardcoded other cases in previous version
 	if(i1==i2){
 	    return;
 	}
