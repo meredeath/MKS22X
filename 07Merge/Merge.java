@@ -23,8 +23,8 @@ public class Merge{
 	merge(data, temp, lo, mid, hi);
     }
     private static void merge(int[] data, int[] temp, int lo, int mid, int hi){
-	int i1=lo;
-	int i2=mid+1;
+	int i1 = lo;
+	int i2 = mid+1;
 	int index = lo;
 	/*
 	//hardcoded other cases in previous version
