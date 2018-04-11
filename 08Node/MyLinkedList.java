@@ -81,5 +81,41 @@ public class MyLinkedList{
 	return true;
     }
 
-    public void add(int index, Integer value){}
+    public void add(int index, Integer value){
+	int i=index;
+	Node before = start;
+	while(i>1){
+	    before=before.getNext();
+	    i--;
+	};
+	Node after = before.getNext();
+	Node added = new Node(value);
+	before.setNext(added);
+	added.setNext(after);
+    }
+
+    public boolean remove(Integer value){
+	Node current = start;
+	int index = 0;
+	while(current.getNext()!=null){
+	    if(current.getValue()==value){
+		current.getPrev().setNext(current.getNext());
+		return true;
+	    }
+	    current=current.getNext();
+	    index++;
+	}
+	return false;
+    }
+
+    public Integer remove(int index){
+	Node current = start;
+	int i = index;
+	while(i>0){
+	    current=current.getNext();
+	    index--;
+	}
+	current.getPrev().setNext(current.getNext());
+	return current.getValue();
+    }
 }
