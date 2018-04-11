@@ -26,7 +26,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	MyLinkedListImproved L;
 	Node current = null;
 	
-	public MyLinkedListIterator(MyLinkedListImproved input){
+	public MyLinkedListIterator(MyLinkedListImproved<T> input){
 	    L=input;
 	    current=input.getStart();
 	}
@@ -45,7 +45,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	}
 
 	public boolean hasNext(){
-	    return current!=L.getEnd();
+	    return current!=null;
 	}
     }
 
@@ -179,7 +179,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     public int max(){
 	T cur = start.getValue();
 	int index = 0;
-	for(Node i:this){
+	for(T i:this){
 	    if(i.getValue().compareTo(cur)>1){
 		cur=i.getValue();
 		index++;
@@ -193,7 +193,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     public int min(){
 	T cur = start.getValue();
 	int index = 0;
-	for(Node i:this){
+	for(T i:this){
 	    if(i.getValue().compareTo(cur)<1){
 		cur=i.getValue();
 		index++;
