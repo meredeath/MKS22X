@@ -1,16 +1,17 @@
-public class MyLinkedList{
+import java.util.*;
+public class MyLinkedListImproved<T> implements Iterable<T>{
     private Node start;
     private Node end;
     private int size;
     
     private class Node{
-	private Integer data;
+	private T data;
 	private Node next, prev;
 
-	public Node(Integer data){this.data=data;}
+	public Node(T data){this.data=data;}
 	
-	public Integer getValue(){return data;}
-	public void setValue(Integer val){data=val;}
+	public T getValue(){return data;}
+	public void setValue(T val){data=val;}
 	
 	public Node getNext(){return next;}
 	public void setNext(Node n){next=n;}
@@ -20,11 +21,50 @@ public class MyLinkedList{
 	
 	public String toString(){return "Data: "+data;}
     }
+    
+    private class MyLinkedListIterator implements Iterator<T>{
+	MyLinkedListImproved L;
+	Node current = null;
+	
+	public MyLinkedListIterator(MyLinkedListImproved input){
+	    L=input;
+	    current=input.getStart();
+	}
 
-    public MyLinkedList(){
+	public void remove(){
+	    throw new UnsupportedOperationException();
+	}
+
+	public T next(){
+	    if(hasNext()){
+		current=current.getNext();
+	    }else{
+		System.exit(0);
+	    }
+	    return current.getValue();
+	}
+
+	public boolean hasNext(){
+	    return current!=L.getEnd();
+	}
+    }
+
+    public Iterator<T> iterator(){
+	return new MyLinkedListIterator(this);
+    }
+
+    public MyLinkedListImproved(){
 	start=null;
 	end=null;
 	size=0;
+    }
+
+    public Node getStart(){
+	return start;
+    }
+
+    public Node getEnd(){
+	return end;
     }
 
     public String toString(){
@@ -41,7 +81,7 @@ public class MyLinkedList{
 	return size;
     }
 
-    public Integer get(int index){
+    public T get(int index){
 	if(index<0||index>size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
@@ -53,7 +93,7 @@ public class MyLinkedList{
 	return current.getValue();
     }
 
-    public Integer set(int index, Integer value){
+    public T set(int index, T value){
 	if(index<0||index>size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
@@ -62,12 +102,12 @@ public class MyLinkedList{
 	    current=current.getNext();
 	    index--;
 	}
-	Integer old = current.getValue();
+	T old = current.getValue();
 	current.setValue(value);
 	return old;
     }
 
-    public int indexOf(Integer value){
+    public int indexOf(T value){
 	Node current = start;
 	int index = 0;
 	while(current.getNext()!=null){
@@ -80,7 +120,7 @@ public class MyLinkedList{
 	return -1;
     }
 
-    public boolean add(Integer newData){
+    public boolean add(T newData){
 	Node newthang = new Node(newData);
 	end.setNext(newthang);
 	newthang.setPrev(end);
@@ -89,7 +129,7 @@ public class MyLinkedList{
 	return true;
     }
 
-    public void add(int index, Integer value){
+    public void add(int index, T value){
 	if(index<0||index>size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
@@ -106,7 +146,7 @@ public class MyLinkedList{
 	size++;
     }
 
-    public boolean remove(Integer value){
+    public boolean remove(T value){
 	Node current = start;
 	int index = 0;
 	while(current.getNext()!=null){
@@ -121,7 +161,7 @@ public class MyLinkedList{
 	return false;
     }
 
-    public Integer remove(int index){
+    public T remove(int index){
 	if(index<0||index>size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
