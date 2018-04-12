@@ -180,28 +180,28 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	T cur = start.getValue();
 	int index = 0;
 	for(T i:this){
-	    if(i.getValue().compareTo(cur)>1){
-		cur=i.getValue();
+	    if(i.compareTo(cur)>1){
+		cur=i;
 		index++;
 	    }
 	}
-	return index;
 	if(size==0){
 	    return -1;
 	}
+	return index;
     }
     public int min(){
 	T cur = start.getValue();
 	int index = 0;
 	for(T i:this){
-	    if(i.getValue().compareTo(cur)<1){
-		cur=i.getValue();
+	    if(i.compareTo(cur)<1){
+		cur=i;
 		index++;
 	    }
 	}
-	return index;
 	if(size==0){
 	    return -1;
 	}
+	return index;
     }
 }

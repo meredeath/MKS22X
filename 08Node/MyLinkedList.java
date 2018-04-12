@@ -28,8 +28,17 @@ public class MyLinkedList{
     }
 
     public String toString(){
-	return "["+start+
-	    "]<->["+end+"], size "+size;
+	if(end==null){
+	    return "LL has nothing in it";
+	}
+	String result = "";
+	Node current = start;
+	for(int i=size;i>0;i--){
+	    //System.out.println(current.getValue());
+	    result+="["+current.getValue()+"]-";
+	    current=current.getNext();
+	}
+	return result;
     }
 
     public void clear(){
@@ -42,7 +51,7 @@ public class MyLinkedList{
     }
 
     public Integer get(int index){
-	if(index<0||index>size){
+	if(index<0||index>=size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
 	Node current = start;
@@ -82,11 +91,18 @@ public class MyLinkedList{
 
     public boolean add(Integer newData){
 	Node newthang = new Node(newData);
-	end.setNext(newthang);
-	newthang.setPrev(end);
-	end=newthang;
-	size++;
-	return true;
+	if(end==null){
+	    start=newthang;
+	    end=newthang;
+	    size++;
+	    return true;
+	}else{
+	    end.setNext(newthang);
+	    newthang.setPrev(end);
+	    end=newthang;
+	    size++;
+	    return true;
+	}
     }
 
     public void add(int index, Integer value){
