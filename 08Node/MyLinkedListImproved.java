@@ -111,7 +111,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	Node current = start;
 	int index = 0;
 	while(current.getNext()!=null){
-	    if(current.getValue()==value){
+	    if(current.getValue().equals(value)){
 		return index;
 	    }
 	    current=current.getNext();
