@@ -119,6 +119,7 @@ public class MyLinkedList{
 	Node added = new Node(value);
 	before.setNext(added);
 	added.setNext(after);
+	added.setPrev(before);
 	size++;
     }
 
@@ -165,6 +166,8 @@ public class MyLinkedList{
 	}
 	//System.out.println(current);
 	Integer result = current.getValue();
+	//System.out.println(current.getPrev());
+	//System.out.println(current.getNext());
 	current.getPrev().setNext(current.getNext());
 	size--;
 	return result;
