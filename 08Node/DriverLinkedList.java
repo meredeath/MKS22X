@@ -47,6 +47,8 @@ public class DriverLinkedList{
        System.out.println(a);
      } //sets the data of each node to 10 * index
 
+     System.out.println("size: " + a.size());
+     
      System.out.println("\nTesting exceptions for set(int index, Integer value)");
      try{
        System.out.println(a.set(-1, new Integer(1)));

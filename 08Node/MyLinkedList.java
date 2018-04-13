@@ -40,7 +40,7 @@ public class MyLinkedList{
 	}
 	return result;
     }
-
+    
     public void clear(){
 	start=null;
 	end=null;
@@ -63,7 +63,7 @@ public class MyLinkedList{
     }
 
     public Integer set(int index, Integer value){
-	if(index<0||index>size){
+	if(index<0||index>=size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
 	Node current = start;
@@ -142,17 +142,31 @@ public class MyLinkedList{
     }
 
     public Integer remove(int index){
-	if(index<0||index>size){
+	if(index<0||index>=size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
+	}
+	if(index==0){
+	    Integer old = start.getValue();
+	    start=start.getNext();
+	    size--;
+	    return old;
+	}
+	if(index==size-1){
+	    Integer fin = end.getValue();
+	    end=end.getPrev();
+	    size--;
+	    return fin;
 	}
 	Node current = start;
 	int i = index;
-	while(i>0){
+	while(i!=0){
 	    current=current.getNext();
-	    index--;
+	    i--;
 	}
+	//System.out.println(current);
+	Integer result = current.getValue();
 	current.getPrev().setNext(current.getNext());
 	size--;
-	return current.getValue();
+	return result;
     }
 }
