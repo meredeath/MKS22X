@@ -80,7 +80,7 @@ public class MyLinkedList{
 	Node current = start;
 	int index = 0;
 	while(current.getNext()!=null){
-	    if(current.getValue()==value){
+	    if(current.getValue().equals(value)){
 		return index;
 	    }
 	    current=current.getNext();
@@ -126,8 +126,12 @@ public class MyLinkedList{
 	Node current = start;
 	int index = 0;
 	while(current.getNext()!=null){
-	    if(current.getValue()==value){
-		current.getPrev().setNext(current.getNext());
+	    if(current.getValue().equals(value)){
+		if(current==start){
+		    start=current.getNext();
+		}else{
+		    current.getPrev().setNext(current.getNext());
+		}
 		size--;
 		return true;
 	    }
