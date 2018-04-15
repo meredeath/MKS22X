@@ -65,9 +65,11 @@ public class DriverLinkedList{
      for (int i = 0; i < 9; i++){
        a.add(i, new Integer(i * 3));
        System.out.println("index added: " + i + " LinkedList: " + a.toString());
+       System.out.println("size now: "+ a.size());
      } //adds multiples of 3 up to 24 to the LinkedList at the beginning
      a.add(19, new Integer(100)); //adds 100 to the LinkedList at the end
      System.out.println("index added: " + 19 + " LinkedList: " + a.toString());
+     System.out.println("size now: "+ a.size());
 
      System.out.println("\nTesting exceptions for add(int index, Integer value)");
      try{

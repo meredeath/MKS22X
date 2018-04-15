@@ -29,7 +29,7 @@ public class MyLinkedList{
 
     public String toString(){
 	if(end==null){
-	    return "LL has nothing in it";
+	    return "[]";
 	}
 	String result = "";
 	Node current = start;
@@ -109,6 +109,14 @@ public class MyLinkedList{
 	if(index<0||index>size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
+	if(index==size){
+	    Node newthang = new Node(value);
+	    end.setNext(newthang);
+	    newthang.setPrev(end);
+	    end=newthang;
+	    size++;
+	    return;
+	}
 	int i=index;
 	Node before = start;
 	while(i>1){
@@ -153,6 +161,7 @@ public class MyLinkedList{
 	    return old;
 	}
 	if(index==size-1){
+	    //System.out.println(end);
 	    Integer fin = end.getValue();
 	    end=end.getPrev();
 	    size--;
@@ -164,10 +173,7 @@ public class MyLinkedList{
 	    current=current.getNext();
 	    i--;
 	}
-	//System.out.println(current);
 	Integer result = current.getValue();
-	//System.out.println(current.getPrev());
-	//System.out.println(current.getNext());
 	current.getPrev().setNext(current.getNext());
 	size--;
 	return result;
