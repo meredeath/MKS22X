@@ -64,9 +64,15 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     public Node getStart(){
 	return start;
     }
+    public void setStart(Node other){
+	start=other;
+    }
 
     public Node getEnd(){
 	return end;
+    }
+    public void setEnd(Node other){
+	end=other;
     }
 
     public String toString(){
@@ -252,5 +258,17 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	    index++;
 	}
 	return minIndex;
+    }
+
+    public void extend(MyLinkedListImproved<T> other){
+	if(other.size()==0){
+	    return;
+	}
+	//System.out.println(end);
+	end.setNext(other.getStart());
+	//System.out.println(end.getNext().getNext());
+	end=other.getEnd();
+	other.setStart(null);
+	other.setEnd(null);
     }
 }
