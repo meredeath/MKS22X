@@ -235,7 +235,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	int index = 0;
 	int maxIndex = 0;
 	for(T i:this){
-	    if(i.compareTo(cur)<0){
+	    if(i.compareTo(cur)>0){
 		cur=i;
 		maxIndex=index;
 	    }
@@ -251,7 +251,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	int index = 0;
 	int minIndex = 0;
 	for(T i:this){
-	    if(i.compareTo(cur)>0){
+	    if(i.compareTo(cur)<0){
 		cur=i;
 		minIndex=index;
 	    }
