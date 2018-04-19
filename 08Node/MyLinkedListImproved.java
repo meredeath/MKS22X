@@ -79,14 +79,13 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	if(end==null){
 	    return "[]";
 	}
-	String result = "";
+	StringBuilder stringBuilder = new StringBuilder();
 	Node current = start;
-	for(int i=size;i>0;i--){
-	    //System.out.println(current.getValue());
-	    result+="["+current.getValue()+"]-";
+	while(current!=null){
+	    stringBuilder.append("["+current.getValue()+"]-");
 	    current=current.getNext();
 	}
-	return result;
+	return stringBuilder.toString();
     }
     
     public void clear(){
@@ -264,10 +263,9 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	if(other.size()==0){
 	    return;
 	}
-	//System.out.println(end);
 	end.setNext(other.getStart());
-	//System.out.println(end.getNext().getNext());
 	end=other.getEnd();
+	size+=other.size();
 	other.setStart(null);
 	other.setEnd(null);
     }
