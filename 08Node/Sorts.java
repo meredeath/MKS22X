@@ -1,4 +1,5 @@
 import java.util.Arrays.*;
+import java.util.*;
 public class Sorts{
     public static void main(String[] args){
 	/*
@@ -24,6 +25,14 @@ public class Sorts{
 	System.out.println(java.util.Arrays.toString(anArr));
 	System.out.println(isSorted(anArr));
 	*/
+
+        MyLinkedListImproved<Integer> alist = new MyLinkedListImproved<Integer>();
+	for(int i=0;i<8;i++){
+	    alist.add(Integer.valueOf(i));
+	}
+	System.out.println(alist);
+
+	radixsort(alist);
     }
     
     public static String name(){
@@ -99,7 +108,13 @@ public class Sorts{
     }
 
     public static void radixsort(MyLinkedListImproved<Integer> data){
-	return;
+	ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
+	for(int i=0;i<10;i++){
+	    MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
+	    //a.add(Integer.valueOf(0));
+	    buckets.add(a);
+	}
+	System.out.println(buckets);
     }
     
 }
