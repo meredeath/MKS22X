@@ -11,9 +11,12 @@ public class HeapDriver{
 	System.out.println(Arrays.toString(a)+"\n");
 
 	System.out.println("Testing add===================================");
-	MyHeap b = new MyHeap();
+	MyHeap b = new MyHeap(true);
 	System.out.println(b);
 	b.add("Pizza");
+	System.out.println(b.getSize());
+	System.out.println(b);
+	b.add("Action");
 	System.out.println(b);
     }
 }
