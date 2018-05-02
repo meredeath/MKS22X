@@ -23,8 +23,16 @@ public class MyHeap{
 	}
     }
 
-    public int getSize(){
+    public int size(){
 	return size;
+    }
+
+    public void resize(){
+	String[] newone = new String[arr.length*2];
+	for (int i=0;i<arr.length;i++){
+	    newone[i]=arr[i];
+	}
+	arr = newone;
     }
     
     public void add(String s){
@@ -36,10 +44,37 @@ public class MyHeap{
 	if(mode==true){
 	    maxAdd(s);
 	}else{
-	    return;
+	    minAdd(s);
 	}
     }
-    
+    public void minAdd(String s){
+	if(size>=arr.length){
+	    resize();
+	}
+    	int current = size;
+	arr[current]=s;
+	size++;
+	int parent = (current-1)/2;
+	if(arr[current].compareTo(arr[parent])<0){
+	    pushDown(current);
+	}
+    }
+    public void pushDown(int cur){
+	if(size>arr.length){
+	    resize();
+	}
+	int current = cur;
+	if(current==0){
+	    return;
+	}
+	int parent = (current-1)/2;
+	if(arr[current].compareTo(arr[parent])<0){
+	    swap(cur,parent,arr);
+	    current=parent;
+	    pushDown(current);
+	}
+    }
+
     public void maxAdd(String s){
 	int current = size;
 	arr[current]=s;
@@ -66,5 +101,13 @@ public class MyHeap{
 	String temp = ar[i1];
 	ar[i1]=ar[i2];
 	ar[i2]=temp;
+    }
+
+    public String peek(){
+	return arr[0];
+    }
+
+    public String remove(){
+	return "not done";
     }
 }

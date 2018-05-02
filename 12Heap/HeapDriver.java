@@ -2,30 +2,21 @@ import java.util.*;
 public class HeapDriver{
     public static void main(String[] args){
 	System.out.println("Testing swap================================");
-	String[] a = new String[10];
+	String[] c = new String[10];
 	for(int i=0;i<10;i++){
-	    a[i]=i+"";
+	    c[i]=i+"";
 	}
-	System.out.println(Arrays.toString(a));
-	MyHeap.swap(0,5,a);
-	System.out.println(Arrays.toString(a)+"\n");
+	System.out.println(Arrays.toString(c));
+	MyHeap.swap(0,5,c);
+	System.out.println(Arrays.toString(c)+"\n");
 
-	System.out.println("Testing add===================================");
-	//System.out.println("Pizza".compareTo("Action"));
+	System.out.println("Testing maxAdd===================================");
 	MyHeap b = new MyHeap(true);
-	//System.out.println(b);
 	b.add("a");
-	//System.out.println(b.getSize());
-	//System.out.println(b);
 	b.add("b");
 	System.out.println(b);
-	//System.out.println(b.getSize());
 	b.add("x");
 	System.out.println(b);
-	//b.add("a");
-	//System.out.println(b);
-	//b.add("c");
-	//System.out.println(b);
 	b.add("c");
 	System.out.println(b);
 	b.add("d");
@@ -36,5 +27,23 @@ public class HeapDriver{
 	System.out.println(b);
 	b.add("g");
 	System.out.println(b);
+
+	System.out.println("Testing minAdd===================================");
+	MyHeap a = new MyHeap(false);
+	a.add("a");
+	a.add("b");
+	System.out.println(a);
+	a.add("x");
+	System.out.println(a);
+	a.add("c");
+	System.out.println(a);
+	a.add("d");
+	System.out.println(a);
+	a.add("e");
+	System.out.println(a);
+	a.add("f");
+	System.out.println(a);
+	a.add("g");
+	System.out.println(a);
     }
 }
