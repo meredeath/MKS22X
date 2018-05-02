@@ -68,10 +68,18 @@ public class MyHeap{
 	    return;
 	}
 	int parent = (current-1)/2;
-	if(arr[current].compareTo(arr[parent])<0){
-	    swap(cur,parent,arr);
-	    current=parent;
-	    pushDown(current);
+	if(mode==true){
+	    if(arr[current].compareTo(arr[parent])<0){
+		swap(cur,parent,arr);
+		current=parent;
+		pushDown(current);
+	    }
+	}else{
+	    if(arr[current].compareTo(arr[parent])<0){
+		swap(cur,parent,arr);
+		current=parent;
+		pushUp(current);
+	    }
 	}
     }
 
@@ -90,10 +98,18 @@ public class MyHeap{
 	    return;
 	}
 	int parent = (current-1)/2;
-	if(arr[current].compareTo(arr[parent])>0){
-	    swap(cur,parent,arr);
-	    current=parent;
-	    pushUp(current);
+	if(mode==true){
+	    if(arr[current].compareTo(arr[parent])>0){
+		swap(cur,parent,arr);
+		current=parent;
+		pushUp(current);
+	    }
+	}else{
+	    if(arr[current].compareTo(arr[parent])<0){
+		swap(cur,parent,arr);
+		current=parent;
+		pushUp(current);
+	    }
 	}
     }
 
@@ -108,6 +124,10 @@ public class MyHeap{
     }
 
     public String remove(){
-	return "not done";
+	String ans = arr[0];
+	arr[0]=arr[size-1];
+	arr[size-1]=null;
+	pushDown(0);
+	return ans;
     }
 }
