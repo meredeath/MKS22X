@@ -11,12 +11,30 @@ public class HeapDriver{
 	System.out.println(Arrays.toString(a)+"\n");
 
 	System.out.println("Testing add===================================");
+	//System.out.println("Pizza".compareTo("Action"));
 	MyHeap b = new MyHeap(true);
+	//System.out.println(b);
+	b.add("a");
+	//System.out.println(b.getSize());
+	//System.out.println(b);
+	b.add("b");
 	System.out.println(b);
-	b.add("Pizza");
-	System.out.println(b.getSize());
+	//System.out.println(b.getSize());
+	b.add("x");
 	System.out.println(b);
-	b.add("Action");
+	//b.add("a");
+	//System.out.println(b);
+	//b.add("c");
+	//System.out.println(b);
+	b.add("c");
+	System.out.println(b);
+	b.add("d");
+	System.out.println(b);
+	b.add("e");
+	System.out.println(b);
+	b.add("f");
+	System.out.println(b);
+	b.add("g");
 	System.out.println(b);
     }
 }

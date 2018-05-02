@@ -6,12 +6,12 @@ public class MyHeap{
     
     public MyHeap(){
 	arr=new String[10];
-	size=10;
+	size=0;
 	mode=true;
     }
     public MyHeap(boolean b){
 	arr=new String[10];
-	size=10;
+	size=0;
 	mode=b;
     }
 
@@ -50,14 +50,14 @@ public class MyHeap{
 	}
     }
     public void pushUp(int cur){
-	if(cur==0){
+	int current = cur;
+	if(current==0){
 	    return;
 	}
-	int parent =(cur-1)/2;
-	swap(cur,parent,arr);
-	int current=parent;
-	parent = (current-1)/2;
-	if(arr[parent].compareTo(arr[cur])>0){
+	int parent = (current-1)/2;
+	if(arr[current].compareTo(arr[parent])>0){
+	    swap(cur,parent,arr);
+	    current=parent;
 	    pushUp(current);
 	}
     }
