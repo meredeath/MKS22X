@@ -55,25 +55,29 @@ public class MyHeap{
 	int current = cur;
 	int c1 = (current*2)+1;
 	int c2 = (current*2)+2;
-	if(arr[c1]==null || arr[c2]==null){
+	if(arr[c1]==null && arr[c1]==null){
 	    return;
-	}
-	if(mode==true){
-	    if(arr[current].compareTo(arr[c1])<0){
-		swap(cur,c1,arr);
-		pushDown(c1);
-	    }else if(arr[current].compareTo(arr[c2])<0){
-		swap(cur,c2,arr);
-		pushDown(c2);
-	    }
 	}else{
-	    if(arr[current].compareTo(arr[c1])>0){
-		swap(cur,c1,arr);
-		current=c1;
-		pushDown(current);
-	    }else if(arr[current].compareTo(arr[c2])>0){
-		swap(cur,c2,arr);
-		pushDown(c2);
+	    if(arr[c2]==null){
+		if(mode==true){
+		    if(arr[current].compareTo(arr[c1])<0){
+			swap(cur,c1,arr);
+			pushDown(c1);
+		    }
+		}else{
+		    if(arr[current].compareTo(arr[c1])>0){
+			swap(cur,c1,arr);
+			pushDown(c1);
+		    }
+		}
+	    }else{
+		if(arr[c1].compareTo(arr[c2])<0){
+		    swap(cur,c1,arr);
+		    pushDown(c1);
+		}else{
+		    swap(cur,c2,arr);
+		    pushDown(c2);
+		}
 	    }
 	}
     }
