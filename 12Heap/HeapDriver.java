@@ -28,7 +28,7 @@ public class HeapDriver{
 	b.add("g");
 	System.out.println(b);
 
-	System.out.println("Testing minAdd===================================");
+	System.out.println("\nTesting minAdd===================================");
 	MyHeap a = new MyHeap(false);
 	a.add("a");
 	a.add("b");
@@ -44,6 +44,33 @@ public class HeapDriver{
 	a.add("f");
 	System.out.println(a);
 	a.add("g");
+	System.out.println(a);
+
+	System.out.println("\nTesting remove===================================");
+	/*
+	System.out.println(b);
+	System.out.println(b.remove());
+	System.out.println(b);
+	System.out.println(b.remove());
+	System.out.println(b);
+	System.out.println(b.remove());
+	System.out.println(b);
+	System.out.println(b.remove());
+	System.out.println(b);
+	System.out.println(b.remove());
+	System.out.println(b);
+	*/
+
+	System.out.println(a);
+	System.out.println(a.remove());
+	System.out.println(a);
+	System.out.println(a.remove());
+	System.out.println(a);
+	System.out.println(a.remove());
+	System.out.println(a);
+	System.out.println(a.remove());
+	System.out.println(a);
+	System.out.println(a.remove());
 	System.out.println(a);
     }
 }
