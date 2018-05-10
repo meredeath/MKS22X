@@ -1,16 +1,18 @@
 import java.util.*;
-public class MyHeap{
-    private String[] arr;
+public class MyHeap<T extends Comparable<T>>{
+    private T[] arr;
     private boolean mode;
     private int size;
-    
+
+    @SuppressWarnings("unchecked")
     public MyHeap(){
-	arr=new String[10];
+	arr=(T[])new Comparable[10];
 	size=0;
 	mode=true;
     }
+    @SuppressWarnings("unchecked")
     public MyHeap(boolean b){
-	arr=new String[10];
+	arr=(T[])new Comparable[10];
 	size=0;
 	mode=b;
     }
@@ -27,15 +29,16 @@ public class MyHeap{
 	return size;
     }
 
+    @SuppressWarnings("unchecked")
     public void resize(){
-	String[] newone = new String[arr.length*2];
+	T[] newone = (T[])new Comparable[arr.length*2];
 	for (int i=0;i<arr.length;i++){
 	    newone[i]=arr[i];
 	}
 	arr = newone;
     }
     
-    public void add(String s){
+    public void add(T s){
 	if(arr[0]==null){
 	    arr[0]=s;
 	    size++;
@@ -103,23 +106,22 @@ public class MyHeap{
 	}
     }
 
-    public static void swap(int i1,int i2,String[] ar){
-	String temp = ar[i1];
+    public void swap(int i1, int i2, T[] ar){
+	T temp = ar[i1];
 	ar[i1]=ar[i2];
 	ar[i2]=temp;
     }
 
-    public String peek(){
+    public T peek(){
 	return arr[0];
     }
 
-    public String remove(){
-	String ans = arr[0];
+    public T remove(){
+	T ans = arr[0];
 	arr[0]=arr[size-1];
 	arr[size-1]=null;
 	size--;
 	pushDown(0);
-	System.out.println("output: "+ans);
 	return ans;
     }
 }

@@ -1,6 +1,7 @@
 import java.util.*;
 public class HeapDriver{
     public static void main(String[] args){
+	/*
 	System.out.println("Testing swap================================");
 	String[] c = new String[10];
 	for(int i=0;i<10;i++){
@@ -9,9 +10,10 @@ public class HeapDriver{
 	System.out.println(Arrays.toString(c));
 	MyHeap.swap(0,5,c);
 	System.out.println(Arrays.toString(c)+"\n");
+	*/
 
 	System.out.println("Testing maxAdd===================================");
-	MyHeap b = new MyHeap(true);
+	MyHeap<String> b = new MyHeap<>(true);
 	b.add("a");
 	b.add("b");
 	System.out.println(b);
@@ -29,7 +31,7 @@ public class HeapDriver{
 	System.out.println(b);
 
 	System.out.println("\nTesting minAdd===================================");
-	MyHeap a = new MyHeap(false);
+	MyHeap<String> a = new MyHeap<String>(false);
 	a.add("a");
 	a.add("b");
 	System.out.println(a);
