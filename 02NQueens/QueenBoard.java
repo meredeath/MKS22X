@@ -193,7 +193,7 @@ public int countSolutions(int R){
     }
 
     public static void main(String[] args){
-	QueenBoard a = new QueenBoard(6);
+	QueenBoard a = new QueenBoard(7);
 	System.out.println(a);
 	//a.addQueen(3,0);
 	//a.addQueen(0,1);
