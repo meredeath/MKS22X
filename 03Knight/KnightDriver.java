@@ -7,14 +7,14 @@ public class KnightDriver{
 	//System.out.println(a);
 
 	//Thanks Crystal!
+	/*
     KnightBoard a = new KnightBoard(3,3);
 
     System.out.println(a);
-    /* Prints
-      _ _ _
-      _ _ _
-      _ _ _
-    */
+    // Prints
+    //  _ _ _
+    //  _ _ _
+    //  _ _ _
 
     for (int i = 0; i < 3; i++){
       for (int j = 0; j < 3; j++){
@@ -25,9 +25,6 @@ public class KnightDriver{
       }
     } //prints nothing
 
-    /*
-    System.out.println(a.countSolutions(0,0)); //prints 0
-    */
 
 
     KnightBoard b = new KnightBoard(5,5);
@@ -93,13 +90,15 @@ public class KnightDriver{
         System.out.println(abc.solve(i,j)); //prints alternating lines of true/false starting with true
       }
     }
-    /*
+    */
     KnightBoard c = new KnightBoard(5,5);
+    System.out.println(c);
 
     int totalSol = 0;
     for (int i = 0; i < 5; i++){
       for (int j = 0; j < 5; j++){
         totalSol += c.countSolutions(i,j);
+	c.clear();
       }
     }
 
@@ -107,6 +106,5 @@ public class KnightDriver{
 
     KnightBoard d = new KnightBoard(5,5);
     System.out.println(d.countSolutions(0,0)); //prints 304
-    */
     }
 }

@@ -104,19 +104,22 @@ public class KnightBoard{
 		}
 	    }
 	}
-	return countHelp(row, col, 0);
+	board[row][col]=1;
+	return countHelp(row, col, 1);
     }
     public int countHelp(int row, int col, int level){
-	boolean solved = true;
+	//boolean solved = false;
+	int sols = 0;
 	int[][] moves = {{-2,1},{-2,-1},{-1,2},{-1,-2},{2,1},{2,-1},{1,2},{1,-2}};
-	if(solved){
+	if(level==board.length*board[0].length){
+	    //solved=true;
 	    return 1;
 	}
 	for(int i=0;i<8;i++){
 	    if(move(row+moves[i][0],col+moves[i][1],level+1)){
-		sols+=countHelp(row+moves[i][0],col+moves[i][1]);
-		}else{
-		    board[row+moves[i][0]][col+moves[i][1]]=0;
+		sols+=countHelp(row+moves[i][0],col+moves[i][1],level+1);
+		board[row+moves[i][0]][col+moves[i][1]]=0;
+		//System.out.println(sols);
 		}
 	    }
 	return sols;
