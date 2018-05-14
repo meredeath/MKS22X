@@ -44,6 +44,7 @@ public class Maze{
 	}
 	int countE=0;
 	int countS=0;
+	maze=new char[things.size()][things.get(0).length];
 	for(int i=0;i<things.size();i++){
 	    for(int g=0;g<things.get(0).length;g++){
 		maze[i][g]=things.get(i)[g];
@@ -61,9 +62,16 @@ public class Maze{
     }
 
     public String toString(){
-	return Arrays.toString(maze);
+	String output = "";
+	for(int i=0;i<maze.length;i++){
+	    for(int g=0;g<maze[0].length;g++){
+		output+=maze[i][g];
+	    }
+	    output+="\n";
+	}
+	return output;
     }
-    /*
+
     private void wait(int millis){
          try {
              Thread.sleep(millis);

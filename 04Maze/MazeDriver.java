@@ -1,14 +1,13 @@
+import java.io.*;
 public class MazeDriver{
 
     public static void main(String[]args){
-        Maze f;
-        f = new Maze("Maze1.txt");//true animates the maze.
-
-	/*
-        f.setAnimate(true);
-        f.solve();
-	*/
-	
-        System.out.println(f);
+	try{
+	    Maze f = new Maze("Maze1.txt");
+	    System.out.println(f);
+	}catch(FileNotFoundException e){
+	    System.out.println("your file does not exist!");
+	    System.exit(1);
+	}
     }
 }
