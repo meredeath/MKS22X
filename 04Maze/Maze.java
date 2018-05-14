@@ -23,19 +23,46 @@ public class Maze{
 
     */
 
-    public Maze(String filename) throws FileNotFoundException {
+    public Maze(String filename) throws FileNotFoundException{
         animate=false;
 
+	ArrayList<char[]> things = new ArrayList<>();
+	/*
+	if(!new File(filename).exists()){
+	    throw new FileNotFoundException("the file you inputted does not exist!");
+	}
+	*/
 	File maz = new File(filename);
 	Scanner scan = new Scanner(maz);
 	while(scan.hasNextLine()){
 	    String line = scan.nextLine();
-	    System.out.println(line);
+	    char[] r = new char[line.length()];
+	    for(int i=0;i<line.length();i++){
+		r[i]=line.charAt(i);
+	    }
+	    things.add(r);
 	}
-	
+	int countE=0;
+	int countS=0;
+	for(int i=0;i<things.size();i++){
+	    for(int g=0;g<things.get(0).length;g++){
+		maze[i][g]=things.get(i)[g];
+		if(things.get(i)[g]==('E')){
+		    countE++;
+		}
+		if(things.get(i)[g]==('S')){
+		    countS++;
+		}
+	    }
+	}
+	if(countE!=1||countS!=1){
+	    throw new IllegalStateException("exception: maze can only have one start or one end");
+	}
     }
 
-    
+    public String toString(){
+	return Arrays.toString(maze);
+    }
     /*
     private void wait(int millis){
          try {
