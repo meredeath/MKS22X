@@ -34,7 +34,6 @@ public class MyLinkedList{
 	String result = "";
 	Node current = start;
 	for(int i=size;i>0;i--){
-	    //System.out.println(current.getValue());
 	    result+="["+current.getValue()+"]-";
 	    current=current.getNext();
 	}
@@ -161,7 +160,6 @@ public class MyLinkedList{
 	    return old;
 	}
 	if(index==size-1){
-	    //System.out.println(end);
 	    Integer fin = end.getValue();
 	    end=end.getPrev();
 	    size--;

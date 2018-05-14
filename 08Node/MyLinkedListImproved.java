@@ -208,7 +208,6 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	    return old;
 	}
 	if(index==size-1){
-	    //System.out.println(end);
 	    T fin = end.getValue();
 	    end=end.getPrev();
 	    size--;
