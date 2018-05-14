@@ -23,5 +23,7 @@ public class ImprovedDriver{
 	a.extend(b);
 	System.out.println("this after: "+a);
 	System.out.println("other after: "+b);
+	b.add(0,Integer.valueOf(5));
+	System.out.println(b);
     }
 }

@@ -156,8 +156,21 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	if(index<0||index>size){
 	    throw new IndexOutOfBoundsException("your index is out of bounds! please choose a new one");
 	}
+	Node newthang = new Node(value);
+	if(end==null){
+	    start=newthang;
+	    end=newthang;
+	    size++;
+	    return;
+	}
+	if(index==0){
+	    start.setPrev(newthang);
+	    newthang.setNext(start);
+	    start=newthang;
+	    size++;
+	    return;
+	}
 	if(index==size){
-	    Node newthang = new Node(value);
 	    end.setNext(newthang);
 	    newthang.setPrev(end);
 	    end=newthang;
