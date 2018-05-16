@@ -3,7 +3,11 @@ public class MazeDriver{
 
     public static void main(String[]args){
 	try{
-	    Maze f = new Maze("Maze1.txt");
+	    Maze f = new Maze("data1.dat");
+	    System.out.println(f);
+
+	    f.setAnimate(true);
+	    f.solve();
 	    System.out.println(f);
 	}catch(FileNotFoundException e){
 	    System.out.println("your file does not exist!");

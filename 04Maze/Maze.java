@@ -82,9 +82,7 @@ public class Maze{
 
 
     public void setAnimate(boolean b){
-
         animate = b;
-
     }
 
 
@@ -104,21 +102,27 @@ public class Maze{
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
 
     */
-    /*
     public int solve(){
 
-            //find the location of the S. 
+	//find the location of the S.
+	int sr=0;
+	int sc=0;
+	for(int i=0;i<maze.length;i++){
+	    for(int g=0;g<maze[0].length;g++){
+		if(maze[i][g]=='S'){
+		    sr=i;
+		    sc=g;
+		}
+	    }
+	}
+	
+	//erase the S
+	maze[sr][sc]=0;
 
-
-            //erase the S
-
-
-            //and start solving at the location of the s.
-
-            //return solve(???,???);
+	//and start solving at the location of the s.	
+	return solve(sr,sc);
 
     }
-    */
 
     /*
       Recursive Solve function:
@@ -138,23 +142,39 @@ public class Maze{
             Note: This is not required based on the algorithm, it is just nice visually to see.
         All visited spots that are part of the solution are changed to '@'
     */
-    /*
-    private int solve(int row, int col){ //you can add more parameters since this is private
-
-
-        //automatic animation! You are welcome.
+    private int solve(int row, int col){  
         if(animate){
-
             clearTerminal();
             System.out.println(this);
-
             wait(20);
         }
-
         //COMPLETE SOLVE
-
+	if(canMove(row+1,col)){
+	    maze[row+1][col]='@';
+	    return solve(row+1,col);
+	}else if(canMove(row,col+1)){
+	    maze[row][col+1]='@';
+	    return solve(row,col+1);
+	}else if(canMove(row-1,col)){
+	    maze[row-1][col]='@';
+	    return solve(row-1,col);
+	}else if(canMove(row,col-1)){
+	    maze[row][col-1]='@';
+	    return solve(row,col-1);
+	}
         return -1; //so it compiles
     }
-    */
-
+    
+    private boolean canMove(int row, int col){
+	/*
+	if(row<0||col<0){
+	    throw new IndexOutOfBoundsException "your index is too small");
+	return false;
+    }
+	*/
+	if(maze[row][col]==' '){
+	    return true;
+	}
+	return false;
+    }
 }
