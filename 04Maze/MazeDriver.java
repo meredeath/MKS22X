@@ -7,7 +7,7 @@ public class MazeDriver{
 	    System.out.println(f);
 
 	    f.setAnimate(true);
-	    f.solve();
+	    System.out.println(f.solve());
 	    System.out.println(f);
 	}catch(FileNotFoundException e){
 	    System.out.println("your file does not exist!");

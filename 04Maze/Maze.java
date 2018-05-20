@@ -133,10 +133,15 @@ public class Maze{
 	int[][] coors = {{-1,0},{0,1},{1,0},{0,-1}};
 	for(int i=0;i<4;i++){
 	    if(canMove(row+coors[i][0],col+coors[i][1])){
-		maze[row+coors[i][0]][col+coors[i][1]]='@';
-		return solve(row+coors[i][0],col+coors[i][1],steps+1);
-	    }else{
-		maze[row][col]='.';
+		if(maze[row+coors[i][0]][col+coors[i][1]]!='E'){
+		    maze[row+coors[i][0]][col+coors[i][1]]='@';
+		}else{
+		    return solve(row+coors[i][0],col+coors[i][1],steps+1);
+		}
+		if(!solve(row+coors[i][0],col+coors[i][1],steps+1)){
+		    maze[row+coors[i][0]][col+coors[i][1]]='.';
+		    continue;
+		}
 	    }
 	}
 	return false;
@@ -195,7 +200,7 @@ public class Maze{
 	if(row>maze.length-2||col>maze[0].length-2){
 	    return false;
 	}
-	if(maze[row][col]==' '){
+	if(maze[row][col]==' '||maze[row][col]=='E'){
 	    return true;
 	}
 	return false;
