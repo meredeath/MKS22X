@@ -3,7 +3,7 @@ public class MazeDriver{
 
     public static void main(String[]args){
 	try{
-	    Maze f = new Maze("data1.dat");
+	    Maze f = new Maze("data3.dat");
 	    System.out.println(f);
 
 	    f.setAnimate(true);

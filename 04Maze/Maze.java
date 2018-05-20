@@ -120,33 +120,6 @@ public class Maze{
 	}
     }
 
-    private boolean solve(int row, int col, int steps){
-	if(animate){
-            clearTerminal();
-            System.out.println(this);
-            wait(20);
-        }
-	if(maze[row][col]=='E'){
-	    step=steps;
-	    return true;
-	}
-	int[][] coors = {{-1,0},{0,1},{1,0},{0,-1}};
-	for(int i=0;i<4;i++){
-	    if(canMove(row+coors[i][0],col+coors[i][1])){
-		if(maze[row+coors[i][0]][col+coors[i][1]]!='E'){
-		    maze[row+coors[i][0]][col+coors[i][1]]='@';
-		}else{
-		    return solve(row+coors[i][0],col+coors[i][1],steps+1);
-		}
-		if(!solve(row+coors[i][0],col+coors[i][1],steps+1)){
-		    maze[row+coors[i][0]][col+coors[i][1]]='.';
-		    continue;
-		}
-	    }
-	}
-	return false;
-    }
-
     /*
       Recursive Solve function:
 
@@ -165,33 +138,33 @@ public class Maze{
             Note: This is not required based on the algorithm, it is just nice visually to see.
         All visited spots that are part of the solution are changed to '@'
     */
-    /*
-    private int solve(int row, int col){
-	int len = 0;
-        if(animate){
+    private boolean solve(int row, int col, int steps){
+	if(animate){
             clearTerminal();
             System.out.println(this);
             wait(20);
         }
 	if(maze[row][col]=='E'){
-	    return len;
-	}else{
-	    maze[row][col]='@';
+	    step=steps;
+	    return true;
 	}
 	int[][] coors = {{-1,0},{0,1},{1,0},{0,-1}};
-        //COMPLETE SOLVE
 	for(int i=0;i<4;i++){
 	    if(canMove(row+coors[i][0],col+coors[i][1])){
-		if(solve(row+coors[i][0],col+coors[i][1])>0){
-		    len++;
-		    return solve(row+coors[i][0],col+coors[i][1]);
+		if(maze[row+coors[i][0]][col+coors[i][1]]!='E'){
+		    maze[row+coors[i][0]][col+coors[i][1]]='@';
+		}else{
+		    return solve(row+coors[i][0],col+coors[i][1],steps+1);
+		}
+		if(solve(row+coors[i][0],col+coors[i][1],steps+1)){
+		    return true;
+		}else{
+		    maze[row+coors[i][0]][col+coors[i][1]]='.';
 		}
 	    }
 	}
-	maze[row][col]='.';
-        return -1;
+	return false;
     }
-    */
 
     private boolean canMove(int row, int col){
 	if(row<1||col<1){
