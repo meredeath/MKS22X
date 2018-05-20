@@ -4,6 +4,7 @@ public class Maze{
 
     private char[][]maze;
     private boolean animate;//false by default
+    private int step;
 
     /*Constructor loads a maze text file, and sets animate to false by default.
 
@@ -27,11 +28,6 @@ public class Maze{
         animate=false;
 
 	ArrayList<char[]> things = new ArrayList<>();
-	/*
-	if(!new File(filename).exists()){
-	    throw new FileNotFoundException("the file you inputted does not exist!");
-	}
-	*/
 	File maz = new File(filename);
 	Scanner scan = new Scanner(maz);
 	while(scan.hasNextLine()){
@@ -87,11 +83,8 @@ public class Maze{
 
 
     public void clearTerminal(){
-
         //erase terminal, go to top left of screen.
-
         System.out.println("\033[2J\033[1;1H");
-
     }
 
 
@@ -117,11 +110,36 @@ public class Maze{
 	}
 	
 	//erase the S
-	maze[sr][sc]=0;
+	maze[sr][sc]='@';
 
-	//and start solving at the location of the s.	
-	return solve(sr,sc);
+	//and start solving at the location of the s.
+	if(solve(sr,sc,0)){
+	    return step;
+	}else{
+	    return -1;
+	}
+    }
 
+    private boolean solve(int row, int col, int steps){
+	if(animate){
+            clearTerminal();
+            System.out.println(this);
+            wait(20);
+        }
+	if(maze[row][col]=='E'){
+	    step=steps;
+	    return true;
+	}
+	int[][] coors = {{-1,0},{0,1},{1,0},{0,-1}};
+	for(int i=0;i<4;i++){
+	    if(canMove(row+coors[i][0],col+coors[i][1])){
+		maze[row+coors[i][0]][col+coors[i][1]]='@';
+		return solve(row+coors[i][0],col+coors[i][1],steps+1);
+	    }else{
+		maze[row][col]='.';
+	    }
+	}
+	return false;
     }
 
     /*
@@ -142,36 +160,41 @@ public class Maze{
             Note: This is not required based on the algorithm, it is just nice visually to see.
         All visited spots that are part of the solution are changed to '@'
     */
-    private int solve(int row, int col){  
+    /*
+    private int solve(int row, int col){
+	int len = 0;
         if(animate){
             clearTerminal();
             System.out.println(this);
             wait(20);
         }
-        //COMPLETE SOLVE
-	if(canMove(row+1,col)){
-	    maze[row+1][col]='@';
-	    return solve(row+1,col);
-	}else if(canMove(row,col+1)){
-	    maze[row][col+1]='@';
-	    return solve(row,col+1);
-	}else if(canMove(row-1,col)){
-	    maze[row-1][col]='@';
-	    return solve(row-1,col);
-	}else if(canMove(row,col-1)){
-	    maze[row][col-1]='@';
-	    return solve(row,col-1);
+	if(maze[row][col]=='E'){
+	    return len;
+	}else{
+	    maze[row][col]='@';
 	}
-        return -1; //so it compiles
+	int[][] coors = {{-1,0},{0,1},{1,0},{0,-1}};
+        //COMPLETE SOLVE
+	for(int i=0;i<4;i++){
+	    if(canMove(row+coors[i][0],col+coors[i][1])){
+		if(solve(row+coors[i][0],col+coors[i][1])>0){
+		    len++;
+		    return solve(row+coors[i][0],col+coors[i][1]);
+		}
+	    }
+	}
+	maze[row][col]='.';
+        return -1;
     }
-    
+    */
+
     private boolean canMove(int row, int col){
-	/*
-	if(row<0||col<0){
-	    throw new IndexOutOfBoundsException "your index is too small");
-	return false;
-    }
-	*/
+	if(row<1||col<1){
+	    return false;
+	}
+	if(row>maze.length-2||col>maze[0].length-2){
+	    return false;
+	}
 	if(maze[row][col]==' '){
 	    return true;
 	}
