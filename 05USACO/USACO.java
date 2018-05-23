@@ -38,6 +38,7 @@ public class USACO{
     public static void main(String[] args){
 	try{
 	    USACO.bronze("test1.txt");
+	    //find ~/.mozilla/firefox -iname \"*lock\" -delete
 	}catch(FileNotFoundException e){
 	    System.out.println("your file does not exist!");
 	    System.exit(1);
