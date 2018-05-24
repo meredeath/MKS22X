@@ -44,7 +44,10 @@ public class USACO{
 	    stuff.remove(0);
 	}
 	//System.out.println(stuff);
-	for(int i=0;i<stuff.size();i++){
+	for(int k=0;k<ground.length;k++){
+	    System.out.println(Arrays.toString(ground[k]));
+	}
+	for(int p=0;p<stuff.size();p++){
 	    String[] dir = stuff.get(0).split(" ");
 	    int R_s = Integer.parseInt(dir[0]);
 	    if(R_s<1||R_s>r-2){
@@ -59,6 +62,10 @@ public class USACO{
 		throw new IllegalArgumentException("depth direction is wrong");
 	    }
 	    stomp(ground, R_s, C_s, D_s);
+	    stuff.remove(0);
+	    for(int i=0;i<ground.length;i++){
+		System.out.println(Arrays.toString(ground[i]));
+	    }
 	}
 	return 0;
     }
@@ -76,7 +83,15 @@ public class USACO{
 		}
 	    }
 	}
-	System.out.println(lake[maxr][maxc]);
+	int fin = lake[maxr][maxc]-d;
+	for(int i=r;i<r+3;i++){
+	    for(int g=c;g<c+3;g++){
+		if(lake[i][g]>=fin){
+		    lake[i][g]=fin;
+		}
+	    }
+	}
+	//System.out.println(lake[maxr][maxc]);
 	return;
     }
     
