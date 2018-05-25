@@ -108,6 +108,7 @@ public class USACO{
     }
     
     public static int silver(String filename){
+	//http://tjsct.wikidot.com/usaco-mar08-silver
 	return 0;
     }
 
