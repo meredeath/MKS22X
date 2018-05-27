@@ -3,6 +3,8 @@ import java.io.*;
 import java.lang.*;
 public class USACO{
 
+    private static int sols;
+
     public static int bronze(String filename) throws FileNotFoundException{
 	//scanning in the file into an ArrayList of Strings, with every line corresponding to an element in the ArrayList
 	File f = new File(filename);
@@ -171,35 +173,32 @@ public class USACO{
 	}
 
 	//actually doing it
-	int sols=0; //total solutions
-	return solve(ground,R1,C1,R2,C2,0,t);
+	sols=0;
+	solve(ground,R1-1,C1-1,R2-1,C2-1,0,t);
+	return sols;
     }
-    private static int solve(char[][] map, int row, int col, int frow, int fcol, int steps, int time){
-	int sols=0;
-	if(steps>time){
-	    return 0;
+
+    private static void solve(char[][] map, int row, int col, int frow, int fcol, int steps, int time){
+	if(steps>=time){
+	    return;
 	}
 	int[][] coors = {{-1,0},{0,1},{1,0},{0,-1}};
 	for(int i=0;i<4;i++){
-	    if(canMove(row-1+coors[i][0],col-1+coors[i][1],map)){
+	    if(canMove(row+coors[i][0],col+coors[i][1],map)){
 		if(row+coors[i][0]==frow&&col+coors[i][1]==fcol){
-		    if(steps==time){
-			return 1;
-		    }else{
-			return 0;
+		    if(steps+1==time){
+			sols++;
 		    }
 		}else{
 		    map[row][col]='#';
-		    sols+=solve(map,row+coors[i][0],col+coors[i][1],frow,fcol,steps+1,time);
+		    solve(map,row+coors[i][0],col+coors[i][1],frow,fcol,steps+1,time);
 		}
 	    }
 	}
-	map[row][col]='#';
-	return 0;
     }
 
     private static boolean canMove(int row, int col,char[][] map){
-	if(row<1||col<1){
+	if(row<0||col<0){
 	    return false;
 	}
 	if(row>map.length-1||col>map[0].length-1){
@@ -215,7 +214,7 @@ public class USACO{
 	try{
 	    //System.out.println(USACO.bronze("test1.txt"));
 	    //find ~/.mozilla/firefox -iname \"*lock\" -delete
-	    USACO.silver("silvertest.txt");
+	    System.out.println(USACO.silver("silvertest.txt"));
 	}catch(FileNotFoundException e){
 	    System.out.println("your file does not exist!");
 	    System.exit(1);
