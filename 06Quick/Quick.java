@@ -2,7 +2,7 @@ import java.util.*;
 public class Quick{
     public static int partition(int[] data, int start, int end){
 	//select a random pivot
-	int pi = (int)(Math.random() * (end - start + 1) + start);
+	int pi = (int)(Math.random() * (end - start) + start);
 	int v = data[pi];
 
 	//move the pivot to the front
@@ -23,7 +23,7 @@ public class Quick{
 		i++;
 	    }
 	}
-	return pi;
+	return end;
     }
 
     public static int quickselect(int[] data, int k){
@@ -35,10 +35,10 @@ public class Quick{
 	int piv = partition(data,start,end);
 	if(piv==k){
 	    return data[piv];
-	}else if(piv<k){
-	    return quickselect(data,start,piv,k);
+	}else if(piv>k){
+	    return quickselect(data,start,piv-1,k);
 	}else{
-	    return quickselect(data,piv,end,k);
+	    return quickselect(data,piv+1,end,k);
 	}
     }
 
