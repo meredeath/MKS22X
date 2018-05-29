@@ -43,6 +43,25 @@ public class Quick{
     }
 
     public static void quicksort(int[] ary){
+	quickhelp(ary,0,ary.length-1);
+    }
+    public static void quickhelp(int[] data, int start, int end){
+	if(start>=end){
+	    return;
+	}
+	int piv = partition(data,start,end);
+	quickhelp(data,start,piv-1);
+	quickhelp(data,piv+1,end);
+    }
+
+    //checks if array is sorted
+    public static boolean isSorted(int[] ary){
+	for(int i=0;i<ary.length-2;i++){
+	    if(ary[i]>ary[i+1]){
+		return false;
+	    }
+	}
+	return true;
     }
 
     public static void swap(int[] data, int i, int j){
