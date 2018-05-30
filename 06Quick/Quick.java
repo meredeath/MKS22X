@@ -49,11 +49,24 @@ public class Quick{
 	if(start>=end){
 	    return;
 	}
+	if((end-start)<=10){
+	    insertionSort(data,start,end);
+	}
 	int piv = partition(data,start,end);
 	quickhelp(data,start,piv-1);
 	quickhelp(data,piv+1,end);
     }
-
+    public static void insertionSort(int[] ary, int start, int end){
+	int index=start;
+	while(index<end){
+	    int j=index;
+	    while(j>0 && ary[j-1]>ary[j]){
+		swap(ary,j,j-1);
+		j=j-1;
+	    }
+	    index++;
+	}
+    }
     //checks if array is sorted
     public static boolean isSorted(int[] ary){
 	for(int i=0;i<ary.length-2;i++){
