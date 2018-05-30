@@ -19,19 +19,19 @@ public class QuickDriver{
 	//thanks Crystal!
  //-----------SORTING POSITIVES-----------
     System.out.println("TESTING ON POSITIVE INTEGERS ONLY:");
-    int[] correctData = new int[100];
+    int[] correctData = new int[1000000];
 
     //Create MyLinkedListImproved and array with random integers
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < 1000000; i++){
       int temp = (int)(Math.random() * 100);
       correctData[i] = temp;
     }
 
     //Sorts data and times the sort
-    long end,start = System.currentTimeMillis();
+    long start = System.currentTimeMillis();
     Quick.quicksort(correctData);
-    end = System.currentTimeMillis();
-    System.out.println("time: "+((end-start)/1000.0));
+    long end = System.currentTimeMillis() - start;
+    System.out.println("time: "+end);
 
     if(Quick.isSorted(correctData)){
 	System.out.println("awesome your sort works!");
@@ -43,10 +43,10 @@ public class QuickDriver{
 
     //-----------SORTING NEGATIVES-----------
     System.out.println("TESTING ON NEGATIVE INTEGERS ONLY:");
-    correctData = new int[100];
+    correctData = new int[1000000];
 
     //Create MyLinkedListImproved and array with random integers
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < 1000000; i++){
       int temp = (int)(Math.random() * 100);
       temp *= -1;
       correctData[i] = temp;
@@ -68,46 +68,22 @@ public class QuickDriver{
     /*
     //-----------SORTING POSITIVES AND NEGATIVES-----------
     System.out.println("TESTING ON POSITIVE AND NEGATIVE INTEGERS:");
-    data.clear();
-    correctData = new int[1000];
+    correctData = new int[1000000];
 
     //Create MyLinkedListImproved and array with random integers
-    for(int i = 0; i < 1000; i++){
+    for(int i = 0; i < 1000000; i++){
       int temp = (int)(Math.random() * 1000);
       if((int)(Math.random() * 1000) % 2 == 0){
         temp *= -1;
       }
-      data.add(temp);
       correctData[i] = temp;
     }
 
     //Sorts data and times the sort
     start = System.currentTimeMillis();
-    radixsort(data);
+    quicksort(data);
     end = System.currentTimeMillis();
 
-    //Sorts the array
-    Arrays.sort(correctData);
-    System.out.println("Sort completed in " + (end - start) + " seconds");
-
-    //Checks if data is properly sorted
-    hasError = false;
-    index = 0;
-    for(Integer x: data){
-      if(!(x.equals(correctData[index]))){
-        System.out.println("THERE IS AN ERROR");
-        System.out.println("Index of error: " + index);
-        hasError = true;
-      }
-      index++;
-    }
-
-    if(!(hasError)){
-      System.out.println("Your LinkedList with positive and negative integers is properly sorted.");
-    }
-    else{
-      System.out.println(data);
-    }
     System.out.println("\n");
 
 
