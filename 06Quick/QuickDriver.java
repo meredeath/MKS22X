@@ -31,7 +31,7 @@ public class QuickDriver{
     long end,start = System.currentTimeMillis();
     Quick.quicksort(correctData);
     end = System.currentTimeMillis();
-    System.out.println("time: "+end);
+    System.out.println("time: "+((end-start)/1000.0));
 
     if(Quick.isSorted(correctData)){
 	System.out.println("awesome your sort works!");
@@ -56,7 +56,7 @@ public class QuickDriver{
     start = System.currentTimeMillis();
     Quick.quicksort(correctData);
     end = System.currentTimeMillis();
-    System.out.println("time: "+end);
+    System.out.println("time: "+((end-start)/1000.0));
 
     if(Quick.isSorted(correctData)){
 	System.out.println("awesome your sort works!");
