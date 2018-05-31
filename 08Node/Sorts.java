@@ -116,11 +116,12 @@ public class Sorts{
 	}
 	int max = data.get(data.max());
 	int d=(int)Math.log10(max);
-	int index = (int)data.getStart().getValue()%10;
-	buckets.get(index).add(cur);
-	for(int i=1;i<d;i++){
-	    for(int g=0;g<data.size();g++){
-		int temp = (int)cur.getNext().getValue();
+	//int index = (int)data.getStart().getValue()%10;
+	//buckets.get(index).add(cur);
+	for(int g=1;g<d;g++){
+	    for(Integer i:data){
+		int index = i%(10*g);
+		buckets.get(index).add(i);
 	    }
 	}
     }
