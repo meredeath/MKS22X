@@ -114,7 +114,18 @@ public class Sorts{
 	    //a.add(Integer.valueOf(0));
 	    buckets.add(a);
 	}
-	System.out.println(buckets);
+	int max = data.get(data.max());
+	int d=(int)Math.log10(max);
+	int index = (int)data.getStart().getValue()%10;
+	buckets.get(index).add(cur);
+	for(int i=1;i<d;i++){
+	    for(int g=0;g<data.size();g++){
+		int temp = (int)cur.getNext().getValue();
+	    }
+	}
     }
     
+    public static void radixsortIncludingNegatives(MyLinkedListImproved<Integer> data){
+	radixsort(data);
+    }
 }
