@@ -86,24 +86,21 @@ public class Sorts{
 
     public static void radixsort(MyLinkedListImproved<Integer> data){
 	int max = data.get(data.max());
-	int d=(int)Math.log10(max);
-	for(int g=1;g<d;g++){
+	int d=(int)Math.log10(max)+1;
+	for(int g=1;g<max;g*=10){
 	ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
 	for(int k=0;k<10;k++){
 	    MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
 	    buckets.add(a);
 	}
-	System.out.println(buckets);
 	    for(Integer i:data){
-		int index = (i%(10*g))/(10*(g-1));
+		int index = (i/g)%10;
 		buckets.get(index).add(i);
-		System.out.println(buckets);
 	    }
 	    MyLinkedListImproved<Integer> nov = new MyLinkedListImproved<Integer>();
 	    for(MyLinkedListImproved<Integer> h: buckets){
 		nov.extend(h);
 	    }
-	    System.out.println(nov);
 	    data.setStart(nov.getStart());
 	    data.setEnd(nov.getEnd());
 	}
