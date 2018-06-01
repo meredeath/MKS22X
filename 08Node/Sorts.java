@@ -27,12 +27,14 @@ public class Sorts{
 	*/
 
         MyLinkedListImproved<Integer> alist = new MyLinkedListImproved<Integer>();
-	for(int i=0;i<8;i++){
-	    alist.add(Integer.valueOf(i));
+	for(int i=0;i<10;i++){
+	    int temp = (int)(Math.random()*100);
+	    alist.add(new Integer(temp));
 	}
 	System.out.println(alist);
 
 	radixsort(alist);
+	System.out.println(alist);
     }
     
     public static String name(){
@@ -108,21 +110,33 @@ public class Sorts{
     }
 
     public static void radixsort(MyLinkedListImproved<Integer> data){
+	/*
 	ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
 	for(int i=0;i<10;i++){
 	    MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
-	    //a.add(Integer.valueOf(0));
 	    buckets.add(a);
 	}
+	*/
 	int max = data.get(data.max());
 	int d=(int)Math.log10(max);
 	//int index = (int)data.getStart().getValue()%10;
 	//buckets.get(index).add(cur);
 	for(int g=1;g<d;g++){
+	ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
+	for(int k=0;k<10;k++){
+	    MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
+	    buckets.add(a);
+	}
 	    for(Integer i:data){
-		int index = i%(10*g);
+		int index = (i%(10*g))/(10*(g-1));
 		buckets.get(index).add(i);
 	    }
+	    MyLinkedListImproved<Integer> nov = new MyLinkedListImproved<Integer>();
+	    for(MyLinkedListImproved<Integer> h: buckets){
+		nov.extend(h);
+	    }
+	    System.out.println(nov);
+	    data=nov;
 	}
     }
     
