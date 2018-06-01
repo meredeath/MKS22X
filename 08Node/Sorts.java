@@ -4,11 +4,16 @@ public class Sorts{
     public static void main(String[] args){
         MyLinkedListImproved<Integer> alist = new MyLinkedListImproved<Integer>();
 	for(int i=0;i<10;i++){
-	    int temp = (int)(Math.random()*100);
-	    alist.add(new Integer(temp));
+	    if(i%2==0){
+		int temp = (int)(Math.random()*100);
+		alist.add(new Integer(temp));
+	    }else{
+		int temp = (int)(Math.random()*-100);
+		alist.add(new Integer(temp));
+	    }
 	}
 	System.out.println(alist);
-	radixsort(alist);
+	radixsortIncludingNegatives(alist);
 	System.out.println(alist);
     }
     
@@ -88,11 +93,11 @@ public class Sorts{
 	int max = data.get(data.max());
 	int d=(int)Math.log10(max)+1;
 	for(int g=1;g<max;g*=10){
-	ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
-	for(int k=0;k<10;k++){
-	    MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
-	    buckets.add(a);
-	}
+	    ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
+	    for(int k=0;k<10;k++){
+		MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
+		buckets.add(a);
+	    }
 	    for(Integer i:data){
 		int index = (i/g)%10;
 		buckets.get(index).add(i);
@@ -107,6 +112,23 @@ public class Sorts{
     }
     
     public static void radixsortIncludingNegatives(MyLinkedListImproved<Integer> data){
-	radixsort(data);
+	MyLinkedListImproved<Integer> negs = new MyLinkedListImproved<Integer>();
+	MyLinkedListImproved<Integer> pos = new MyLinkedListImproved<Integer>();
+	for(Integer i:data){
+	    if(i<=0){
+		pos.add(i);
+	    }else{
+		negs.add(i);
+	    }
+	}
+	radixsort(pos);
+	//System.out.println(pos);
+	radixsort(negs);
+	//System.out.println(negs);
+	MyLinkedListImproved<Integer> ans = new MyLinkedListImproved<Integer>();
+	ans.extend(pos);
+	ans.extend(negs);
+	data.setStart(ans.getStart());
+	data.setEnd(ans.getEnd());
     }
 }
