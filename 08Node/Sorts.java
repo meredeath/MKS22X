@@ -2,37 +2,12 @@ import java.util.Arrays.*;
 import java.util.*;
 public class Sorts{
     public static void main(String[] args){
-	/*
-	int[] anArray = new int[10];
-	for(int i=0;i<anArray.length;i++){
-	    anArray[i]=(int)(Math.random()*100);
-	}
-	System.out.println(isSorted(anArray));
-	System.out.println(name());
-	System.out.println(java.util.Arrays.toString(anArray));
-	//selectionSort(anArray);
-	//bogoSort(anArray);
-	//insertionSort(anArray);
-	bubbleSort(anArray);
-	System.out.println(java.util.Arrays.toString(anArray));
-	System.out.println(isSorted(anArray));
-	int[] anArr = new int[4];
-	anArr[0]=3;
-	anArr[1]=2;
-	anArr[2]=0;
-	anArr[3]=1;
-	selectionSort(anArr);
-	System.out.println(java.util.Arrays.toString(anArr));
-	System.out.println(isSorted(anArr));
-	*/
-
         MyLinkedListImproved<Integer> alist = new MyLinkedListImproved<Integer>();
 	for(int i=0;i<10;i++){
 	    int temp = (int)(Math.random()*100);
 	    alist.add(new Integer(temp));
 	}
 	System.out.println(alist);
-
 	radixsort(alist);
 	System.out.println(alist);
     }
@@ -110,33 +85,27 @@ public class Sorts{
     }
 
     public static void radixsort(MyLinkedListImproved<Integer> data){
-	/*
-	ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
-	for(int i=0;i<10;i++){
-	    MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
-	    buckets.add(a);
-	}
-	*/
 	int max = data.get(data.max());
 	int d=(int)Math.log10(max);
-	//int index = (int)data.getStart().getValue()%10;
-	//buckets.get(index).add(cur);
 	for(int g=1;g<d;g++){
 	ArrayList<MyLinkedListImproved<Integer>> buckets = new ArrayList<>();
 	for(int k=0;k<10;k++){
 	    MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
 	    buckets.add(a);
 	}
+	System.out.println(buckets);
 	    for(Integer i:data){
 		int index = (i%(10*g))/(10*(g-1));
 		buckets.get(index).add(i);
+		System.out.println(buckets);
 	    }
 	    MyLinkedListImproved<Integer> nov = new MyLinkedListImproved<Integer>();
 	    for(MyLinkedListImproved<Integer> h: buckets){
 		nov.extend(h);
 	    }
 	    System.out.println(nov);
-	    data=nov;
+	    data.setStart(nov.getStart());
+	    data.setEnd(nov.getEnd());
 	}
     }
     
