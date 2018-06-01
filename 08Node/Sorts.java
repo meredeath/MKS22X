@@ -115,19 +115,26 @@ public class Sorts{
 	MyLinkedListImproved<Integer> negs = new MyLinkedListImproved<Integer>();
 	MyLinkedListImproved<Integer> pos = new MyLinkedListImproved<Integer>();
 	for(Integer i:data){
-	    if(i<=0){
+	    if(i>=0){
 		pos.add(i);
 	    }else{
+		i*=-1;
 		negs.add(i);
 	    }
 	}
 	radixsort(pos);
-	//System.out.println(pos);
 	radixsort(negs);
-	//System.out.println(negs);
 	MyLinkedListImproved<Integer> ans = new MyLinkedListImproved<Integer>();
+	MyLinkedListImproved<Integer> midnegs = new MyLinkedListImproved<Integer>();
+	for(Integer k:negs){
+	    midnegs.add(k*-1);
+	}
+	MyLinkedListImproved<Integer> realnegs = new MyLinkedListImproved<Integer>();
+	for(int i=midnegs.size()-1;i>-1;i--){
+	    realnegs.add(midnegs.get(i));
+	}
+	ans.extend(realnegs);
 	ans.extend(pos);
-	ans.extend(negs);
 	data.setStart(ans.getStart());
 	data.setEnd(ans.getEnd());
     }
