@@ -273,8 +273,11 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 
     public void extend(MyLinkedListImproved<T> other){
 	if(other.size()==0){
-	    other.setStart(null);
-	    other.setEnd(null);
+	    return;
+	}
+	if(this.size()==0){
+	    this.start=other.getStart();
+	    this.end=other.getEnd();
 	}
 	end.setNext(other.getStart());
 	end=other.getEnd();
