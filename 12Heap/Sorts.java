@@ -1,3 +1,4 @@
+import java.util.*;
 public class Sorts{
     public static void main(String[] args){
 	System.out.println("Testing heapsort======================================");
@@ -6,33 +7,50 @@ public class Sorts{
 	    int temp=(int)(Math.random()*100);
 	    a[i]=temp;
 	}
-	System.out.println(a);
-	for(int k=0;k<a.length;k++){
-	    Sorts.pushDown(k,a);
-	}
-	System.out.println(a);
+	System.out.println(Arrays.toString(a));
+	Sorts.heapsort(a);
+	System.out.println(Arrays.toString(a));
     }
-    public void heapify(int[] a){
-	
+    public static void heapify(int[] a, int lim){
+	for(int i=lim;i>=0;i--){
+	    pushDown(i,a,lim);
+	}
     }
     
-    public static void heapsort(String[] arr){
-	return;
+    public static void heapsort(int[] arr){
+	Sorts.heapify(arr,arr.length-1);
+	int[] sorted = new int[arr.length];
+	int lim = arr.length-1;
+	int lim2=arr.length;
+	for(int i=0;i<arr.length;i++){
+	    sorted[i]=Sorts.remove(arr,lim2-1);
+	    lim2--;
+	    heapify(arr,lim);
+	    lim--;
+	}
+	for(int i=0;i<arr.length;i++){
+	    arr[i]=sorted[i];
+	}
     }
-    public static void pushDown(int cur,int[] arr){
+    public static int remove(int[] arr,int end){
+	int fin = arr[0];
+	arr[0]=arr[end];
+	arr[end]=0;
+	return fin;
+    }
+
+    public static void pushDown(int cur,int[] arr,int lim){
 	int current = cur;
 	int c1 = (current*2)+1;
 	int c2 = (current*2)+2;
-	if(arr[c1]==0 && arr[c1]==0){
-	    return;
+	if(c2<lim && arr[c2]<arr[c1] && arr[c2]<arr[current]){
+	    swap(current,c2,arr);
+	    pushDown(c2,arr,lim);
+	}else if(c1<lim && arr[c1]<arr[current]){
+	    swap(current,c1,arr);
+	    pushDown(c1,arr,lim);
 	}else{
-	    if(c1<arr.length && arr[current]>arr[c1]){
-		swap(current,c1,arr);
-		pushDown(c1,arr);
-	    }else if(c2<arr.length && arr[current]>arr[c2]){
-		swap(current,c2,arr);
-		pushDown(c2,arr);
-	    }
+	    return;
 	}
     }
     public static void swap(int i1, int i2, int[] ar){
