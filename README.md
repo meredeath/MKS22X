@@ -10,7 +10,7 @@ Meredith Hu
 ## School
 Stuyvesant High School
 
-##Table of Contents/What's Done
+## Table of Contents/What's Done
  - [x] 01Recursion
  - [x] 02NQueens
  - [x] 03Knight
