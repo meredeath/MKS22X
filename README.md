@@ -22,8 +22,8 @@ Stuyvesant High School
  - [ ] 09StackCalculator
  - [ ] 10Deque
  - [ ] 11ExpressionTree
- - [ ] 12Heap
- - [ ] 13Medians
+ - [x] 12Heap
+ - [x] 13Medians
  - [ ] 14Frontier
  - [x] gitignore
 ### 01Recursion
@@ -71,8 +71,7 @@ wrote a heap. Also a heapsort.
 Can you tell I'm getting tired writing these descriptions so they're getting progressively shorter and shorter
 
 ### 13Medians
-Goddamn it did we really code this much in this goddamn class. Solves the Running Medians problem, which finds the median of an array really quickly by turning both sides of it into heaps and comparing the root values.
- - [ ] JUST DO IT
+Goddamn it did we really code this much in this goddamn class. Solves the Running Medians problem, which finds the median of an array really quickly by turning both sides of it into heaps (the larger half of the array into a min heap, the smaller half into a max heap) and comparing the root values of the two heaps.
 
 ### 14Frontier
 Stack-based frontier that keeps track of "places in maze you still need to visit" solves the maze for you. We do it
