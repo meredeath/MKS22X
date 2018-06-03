@@ -19,7 +19,7 @@ Stuyvesant High School
  - [x] 06Quick
  - [x] 07Merge
  - [x] 08Node
- - [ ] 09StackCalculator
+ - [x] 09StackCalculator
  - [ ] 10Deque
  - [ ] 11ExpressionTree
  - [x] 12Heap
@@ -56,7 +56,6 @@ Also hidden in this folder is a beautiful radixsort!
 ### 09StackCalculator
 I think this is a stack based calculator?? 
 /lol self explanatory/
- - [ ] still need to DO this one
 
 ### 10Deque
 wrote a deque. first experimentation with FIFO data structures.
