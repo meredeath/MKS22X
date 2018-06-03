@@ -62,10 +62,10 @@ public class MyHeap<T extends Comparable<T>>{
 	int current = cur;
 	int c1 = (current*2)+1;
 	int c2 = (current*2)+2;
-	if(c2<arr.length && comparator.compare(arr[c2],arr[c1])>0 && comparator.compare(arr[c2],arr[current])>0 && arr[c2]!=null){
+	if(c2<arr.length && arr[c2]!= null && comparator.compare(arr[c2],arr[c1])>0 && comparator.compare(arr[c2],arr[current])>0){
 	    swap(current,c2,arr);
 	    pushDown(c2);
-	}else if(c1<arr.length && comparator.compare(arr[c1],arr[current])>0 && arr[c2]!=null){
+	}else if(c1<arr.length && arr[c1]!=null && comparator.compare(arr[c1],arr[current])>0){
 	    swap(current,c1,arr);
 	    pushDown(c1);
 	}else{

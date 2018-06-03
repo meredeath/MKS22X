@@ -3,7 +3,6 @@ public class MyHeap<T extends Comparable<T>>{
     private T[] arr;
     private boolean mode;
     private int size;
-    Comparator<T> comparator = Comparator.naturalOrder();
 
     @SuppressWarnings("unchecked")
     public MyHeap(){
@@ -16,9 +15,6 @@ public class MyHeap<T extends Comparable<T>>{
 	arr=(T[])new Comparable[10];
 	size=0;
 	mode=b;
-	if(mode==false){
-	    comparator = comparator.reversed();
-	}
     }
 
     public String toString(){
@@ -62,14 +58,30 @@ public class MyHeap<T extends Comparable<T>>{
 	int current = cur;
 	int c1 = (current*2)+1;
 	int c2 = (current*2)+2;
-	if(c2<arr.length && arr[c2]!= null && comparator.compare(arr[c2],arr[c1])>0 && comparator.compare(arr[c2],arr[current])>0){
-	    swap(current,c2,arr);
-	    pushDown(c2);
-	}else if(c1<arr.length && arr[c1]!=null && comparator.compare(arr[c1],arr[current])>0){
-	    swap(current,c1,arr);
-	    pushDown(c1);
-	}else{
+	if(arr[c1]==null && arr[c1]==null){
 	    return;
+	}else{
+	    if(arr[c2]==null){
+		if(mode==true){
+		    if(arr[current].compareTo(arr[c1])<0){
+			swap(cur,c1,arr);
+			pushDown(c1);
+		    }
+		}else{
+		    if(arr[current].compareTo(arr[c1])>0){
+			swap(cur,c1,arr);
+			pushDown(c1);
+		    }
+		}
+	    }else{
+		if(arr[c1].compareTo(arr[c2])<0){
+		    swap(cur,c1,arr);
+		    pushDown(c1);
+		}else{
+		    swap(cur,c2,arr);
+		    pushDown(c2);
+		}
+	    }
 	}
     }
 

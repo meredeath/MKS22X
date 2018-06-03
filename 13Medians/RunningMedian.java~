@@ -1,0 +1,21 @@
+public class RunningMedian{
+    int minSize;
+    int maxSize;
+    int size;
+    
+    public RunningMedian(){
+	MyHeap<Double> smside = new MyHeap<>();
+	MyHeap<Double> lgside = new MyHeap<>(false);
+    }
+    public static double getMedian(){
+	return 0;
+    }
+    public static void add(double i){
+	return;
+    }
+    public static void rebalance(){
+    }
+
+    public static int size(){
+    }
+}
