@@ -26,21 +26,9 @@ public class RunningMedian{
 
     //add to the data
     public void add(double i){
-	if(size()==0){
+	if(size()==0 || i<smside.peek()){
 	    smside.add(i);
-	}
-	if(size()==1){
-	    if(i>smside.peek()){
-		lgside.add(i);
-	    }else{
-		lgside.add(smside.peek());
-		smside.add(i);
-	    }
-	}
-	if(i<smside.peek()){
-	    smside.add(i);
-	}
-	if(i>lgside.peek()){
+	}else{
 	    lgside.add(i);
 	}
 	rebalance();
