@@ -4,18 +4,21 @@ public class Calculator{
     public static double eval(String a){
 	double ans = 0.0;
 	String[] tokens = a.split(" ");
-	System.out.println(Arrays.toString(tokens));
 	char[] ops = {'+','-','*','/','%'};
+	boolean op = false;
 	for(String s:tokens){
+	    op=false;
 	    for(int i=0;i<ops.length;i++){
 		if(s.charAt(0)==ops[i]){
+		    op=true;
 		    double d1=st.pop();
 		    double d2=st.pop();
-		    st.push(solve(d1,d2,i));
-		    System.out.println(st);
+		    st.push(solve(d2,d1,i));
 		}
 	    }
-	    st.push(Double.parseDouble(s));
+	    if(op==false){
+		st.push(Double.parseDouble(s));
+	    }
 	}
 	return st.pop();
     }
@@ -38,5 +41,6 @@ public class Calculator{
 	Calculator c = new Calculator();
 	c.eval("10 2.0 +");
 	c.eval("11 3 - 4 + 2.5 *");
+	c.eval("8 2 + 99 9 - * 2 + 9 -");
     }
 }
