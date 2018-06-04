@@ -1,27 +1,43 @@
 public class ExpressionTree{
-  
     /*return the expression as an infix notation string with parenthesis*/
     /* The sample tree would be: "( 3 + (2 * 10))"     */
     public String toString(){
-	/*you are to write this method*/
-	return "";
+	return infix(this);
+    }
+    public String infix(ExpressionTree t){
+	if(t.isValue()){
+	    return ""+t.getValue();
+	}else{
+	    return "("+infix(t.getLeft())+t.getOp()+infix(t.getRight())+")";
+	}
     }
   
     /*return the expression as a postfix notation string without parenthesis*/
     /* The sample tree would be: "3 2 10 * +"     */
     public String toStringPostfix(){
-	/*you are to write this method*/
-	return "";
+	return postfix(this);
     }
   
+    public String postfix(ExpressionTree t){
+	if(t.isValue()){
+	    return ""+t.getValue();
+	}else{
+	    return postfix(t.getLeft())+postfix(t.getRight())+t.getOp();
+	}
+    }
+
     /*return the expression as a prefix notation string without parenthesis*/
     /* The sample tree would be: "+ 3 * 2 10"     */
-  
     public String toStringPrefix(){
-	/*you are to write this method*/
-	return "";
+	return prefix(this);
     }
-   
+    public String prefix(ExpressionTree t){
+	if(t.isValue()){
+	    return ""+t.getValue();
+	}else{
+	    return t.getOp()+prefix(t.getLeft())+prefix(t.getRight());
+	}
+    }
 
     /*return the value of the specified expression tree*/
     public double evaluate(){
@@ -32,26 +48,26 @@ public class ExpressionTree{
 	    double b = getRight().evaluate();
 	    return apply(getOp(),a,b);
 	}
-    }
-
-   
-    
+    }    
 
     /*use the correct operator on both a and b, and return that value*/
     private double apply(char op, double a, double b){
-	/*you are to write this method*/
-	return 0.0;
-
+	char[] ops = {'+','-','*','/','%'};
+	if(op==ops[0]){
+	    return a+b;
+	}else if(op==ops[1]){
+	    return a-b;
+	}else if(op==ops[2]){
+	    return a*b;
+	}else if(op==ops[3]){
+	    return a/b;
+	}else{
+	    return a%b;
+	}
     }
 
 
-
-
-
     ////////////////////ONLY EDIT ABOVE THIS LINE////////////////////
-
-
-
   
     private char op;
     private double value;
