@@ -21,7 +21,7 @@ Stuyvesant High School
  - [x] 08Node
  - [x] 09StackCalculator
  - [ ] 10Deque
- - [ ] 11ExpressionTree
+ - [x] 11ExpressionTree
  - [x] 12Heap
  - [x] 13Medians
  - [ ] 14Frontier
@@ -63,7 +63,6 @@ wrote a deque. first experimentation with FIFO data structures.
 
 ### 11ExpressionTree
 blast from the past. hey DrRacket I sure didn't miss you, but I can make java evaluate your polish notation now.
-- [ ] have to do this
 
 ### 12Heap
 wrote a heap. Also a heapsort.
