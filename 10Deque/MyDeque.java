@@ -9,7 +9,7 @@ public class MyDeque<E>{
 	size=0;
 	front=0;
 	back=9;
-	arr= (E[])new Object[10];
+	arr= new Object[10];
     }
 
     @SuppressWarnings("unchecked")
@@ -20,18 +20,19 @@ public class MyDeque<E>{
 	size=0;
 	front=0;
 	back=initialCapacity-1;
-	arr=(E[])new Object[initialCapacity];
+	arr=new Object[initialCapacity];
     }
 
     public int size(){
 	return size;
     }
 
-    /*
     public void resize(){
-	arr = (E[])new Object[size*2];
+	Object[] ar = new Object[size*2];
+	for(int i=start;i<arr.length;i++){
+	    ar[i]=i;
+	} 
     }
-    */
 
     public void addFirst(E e){
 	if(e==null){
