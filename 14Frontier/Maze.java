@@ -8,15 +8,9 @@ public class Maze{
     Location start,end;
     private char[][]maze;
 
-
-
-    /*
-      YOU MUST COMPLETE THIS METHOD!!!
-      YOU MUST COMPLETE THIS METHOD!!!
-      YOU MUST COMPLETE THIS METHOD!!!
-    */
     public Location[] getNeighbors(Location L){
-	return null;
+	Location[] neighbors = new Location[4];
+	return neighbors;
     }
 
     public Location getStart(){
@@ -90,8 +84,8 @@ public class Maze{
 	  The start/end Locations may need more information later when we add
 	  other kinds of frontiers!
 	*/
-	end = new Location(endr,endc,null);
-	start = new Location(startr,startc,null);
+	//end = new Location(endr,endc,null);
+	//start = new Location(startr,startc,null);
     }
 
     public String toStringColor(){
