@@ -30,16 +30,18 @@ public class MyDeque<E>{
 
     public void resize(){
 	Object[] ar = new Object[size*2];
-	for(int i=0;i<back;i++){
+	for(int i=0;i<=back;i++){
 	    ar[i]=arr[i];
 	}
 	int index=0;
 	if((back+size+1)<ar.length){
-	    for(int g=back+size;g<arr.length;g++){
+	    System.out.println(back+size+1);
+	    System.out.println(ar.length);
+	    for(int g=back+size+1;g<ar.length;g++){
 		ar[g]=arr[front+index];
 		index++;
-		front=back+size;
 	    }
+	    front=back+size+1;
 	}
 	arr=ar;
 	//System.out.println(front);
@@ -140,9 +142,12 @@ public class MyDeque<E>{
 	}
 	System.out.println(a.size());
 	System.out.println(a);
-	for(int i=0;i<6;i++){
+	for(int i=0;i<5;i++){
 	    a.addLast(new Integer(i*3));
 	}
+	System.out.println(a.size());
+	System.out.println(a);
+	a.addLast(new Integer(234));
 	System.out.println(a.size());
 	System.out.println(a);
     }
