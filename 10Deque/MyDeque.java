@@ -92,7 +92,11 @@ public class MyDeque<E>{
 	}
 	E temp = (E)arr[front];
 	arr[front]=null;
-	front++;
+	if(front==arr.length-1){
+	    front=0;
+	}else{
+	    front++;
+	}
 	size--;
 	return temp;
     }
@@ -103,7 +107,11 @@ public class MyDeque<E>{
 	}
 	E temp = (E)arr[back];
 	arr[back]=null;
-	back--;
+	if(back==0){
+	    back=arr.length-1;
+	}else{
+	    back--;
+	}
 	size--;
 	return temp;
     }
