@@ -3,13 +3,15 @@ public class Location implements Comparable<Location>{
     private Location previous;
     private int distance;
     private int steps;
+    private int total;
 
-    public Location(int _x, int _y, Location prev,int d,int s){
+    public Location(int _x, int _y, Location prev,int d,int s,int tot){
 	x=_x;
 	y=_y;
 	prev=null;
 	distance=d;
 	steps=s;
+	total=tot;
     }
 
     public int getX(){
@@ -26,6 +28,9 @@ public class Location implements Comparable<Location>{
     }
     public int getSteps(){
 	return steps;
+    }
+    public int getTotal(){
+	return total;
     }
 
     public void setX(int xhat){
