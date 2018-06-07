@@ -72,8 +72,10 @@ Goddamn it did we really code this much in this goddamn class. Solves the Runnin
 
 ### 14Frontier
 Stack-based frontier that keeps track of "places in maze you still need to visit" solves the maze for you. We do it
- - [ ] DFS (done but not working)
- - [ ] BFS (done but not working)
+ - [x] DFS
+ - [x] BFS
  - [x] Best-First
  - [x] A-star
+
+I'M FINALLY DONE WITH EVERYTHING! I can finally breathe for the first time, in a long time.
 
