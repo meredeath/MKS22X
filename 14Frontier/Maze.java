@@ -8,14 +8,14 @@ public class Maze{
     Location start,end;
     private char[][]maze;
 
-    public Location[] getNeighbors(Location L){
+    public Location[] getNeighbors(Location L, boolean astar){
 	Location[] neighbors = new Location[4];
 	int[][] moves = {{-1,0},{0,1},{1,0},{0,-1}};
 	for(int i=0;i<4;i++){
 	    int row=L.getX()+moves[i][0];
 	    int col=L.getY()+moves[i][1];
 	    if(maze[row][col]==' ' || maze[row][col]=='E'){
-		neighbors[i]=new Location(row,col,L,Math.abs(row-end.getX())+Math.abs(col-end.getY()),L.getSteps()+1,Math.abs(row-start.getX())+Math.abs(row-end.getX()));
+		neighbors[i]=new Location(row,col,L,Math.abs(row-end.getX())+Math.abs(col-end.getY()),L.getSteps()+1,Math.abs(row-start.getX())+Math.abs(row-end.getX()),astar);
 	    }
 	}
 	return neighbors;
@@ -85,8 +85,8 @@ public class Maze{
 	    System.exit(0);
 
 	}
-	end = new Location(endr,endc,null,0,0,0);
-	start = new Location(startr,startc,null,0,0,0);
+	end = new Location(endr,endc,null,0,0,0,false);
+	start = new Location(startr,startc,null,0,0,0,false);
     }
 
     public String toStringColor(){
