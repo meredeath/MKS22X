@@ -5,7 +5,7 @@ public class PriorityQueueFrontier implements Frontier{
 	h = new MyHeap<>(false);
     }
     public boolean hasNext(){
-	return h.size()==0;
+	return !(h.size()==0);
     }
     public void add(Location L){
 	h.add(L);

@@ -38,9 +38,11 @@ public class MazeSolver{
 	}
 	boolean done = false;
 	frontier.add(maze.getStart());
-	while(!done && !frontier.hasNext()){
+	while(!done && frontier.hasNext()){
 	    Location cur = frontier.next();
-	    maze.set(cur.getX(),cur.getY(),'.');
+	    if(cur!=maze.getStart()){
+		maze.set(cur.getX(),cur.getY(),'.');
+	    }
 	    Location[] neighbors = maze.getNeighbors(cur,astar);
 	    for(int i=0;i<neighbors.length;i++){
 		if(neighbors[i]!=null){

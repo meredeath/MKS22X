@@ -13,6 +13,7 @@ public class Location implements Comparable<Location>{
 	distance=d;
 	steps=s;
 	total=tot;
+	astar=a;
     }
 
     public int getX(){

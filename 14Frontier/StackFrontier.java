@@ -12,4 +12,7 @@ public class StackFrontier implements Frontier{
     public Location next(){
 	return s.pop();
     }
+    public String toString(){
+	return s.toString();
+    }
 }
