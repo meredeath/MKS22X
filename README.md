@@ -24,7 +24,7 @@ Stuyvesant High School
  - [x] 11ExpressionTree
  - [x] 12Heap
  - [x] 13Medians
- - [ ] 14Frontier
+ - [x] 14Frontier
  - [x] gitignore
 ### 01Recursion
 A lab dipping our toes into the water regarding recursion; contains a linear factorial function and a square root calculator.
@@ -72,7 +72,8 @@ Goddamn it did we really code this much in this goddamn class. Solves the Runnin
 
 ### 14Frontier
 Stack-based frontier that keeps track of "places in maze you still need to visit" solves the maze for you. We do it
- - [ ] DFS
- - [ ] BFS
- - [ ] A-star
+ - [ ] DFS (done but not working)
+ - [ ] BFS (done but not working)
+ - [x] Best-First
+ - [x] A-star
 
