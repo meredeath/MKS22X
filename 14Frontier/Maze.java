@@ -10,6 +10,14 @@ public class Maze{
 
     public Location[] getNeighbors(Location L){
 	Location[] neighbors = new Location[4];
+	int[][] moves = {{-1,0},{0,1},{1,0},{0,-1}};
+	for(int i=0;i<4;i++){
+	    int row=L.getX()+moves[i][0];
+	    int col=L.getY()+moves[i][1];
+	    if(maze[row][col]==' ' || maze[row][col]=='E'){
+		neighbors[i]=new Location(row,col,L,Math.abs(row-end.getX())+Math.abs(col-end.getY()),L.getSteps()+1,Math.abs(row-start.getX())+Math.abs(row-end.getX()));
+	    }
+	}
 	return neighbors;
     }
 
@@ -19,7 +27,6 @@ public class Maze{
     public Location getEnd(){
 	return end;
     }
-
 
     private static String go(int x,int y){
 	return ("\033[" + x + ";" + y + "H");
@@ -78,14 +85,8 @@ public class Maze{
 	    System.exit(0);
 
 	}
-
-	/*
-	  THIS IS AN IMPORTANT PART BECAUSE YOU WILL NEED TO CHANGE IT LATER!
-	  The start/end Locations may need more information later when we add
-	  other kinds of frontiers!
-	*/
-	//end = new Location(endr,endc,null);
-	//start = new Location(startr,startc,null);
+	end = new Location(endr,endc,null,0,0,0);
+	start = new Location(startr,startc,null,0,0,0);
     }
 
     public String toStringColor(){
